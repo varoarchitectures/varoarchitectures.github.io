@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Pablo VARO</title>
+
+    <!-- SEO : résumé affiché dans les résultats Google -->
+    <meta name="description" content="Portfolio de Pablo Varo, étudiant en architecture à l'ENSASE Saint-Étienne — projets de conception, analyses d'architecture et workshops.">
+
+    <!-- Partage sur réseaux sociaux (LinkedIn, Facebook...) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Portfolio - Pablo Varo">
+    <meta property="og:description" content="Étudiant en architecture à l'ENSASE Saint-Étienne — projets de conception, analyses d'architecture et workshops.">
+    <meta property="og:image" content="img/accueil.png">
+    <!-- ⚠️ Une fois le site en ligne, remplace par l'URL complète, ex. https://tonsite.fr -->
+    <meta property="og:url" content="">
+
+    <!-- Partage sur X / Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Portfolio - Pablo Varo">
+    <meta name="twitter:description" content="Étudiant en architecture à l'ENSASE Saint-Étienne — projets de conception, analyses d'architecture et workshops.">
+    <meta name="twitter:image" content="img/accueil.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+
+    <!-- Tailwind CSS (compilé localement, voir README > "Style / Tailwind") -->
+    <link href="css/tailwind.css" rel="stylesheet">
+    <!-- Police géométrique et sobre -->
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Styles propres au site -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="text-white antialiased selection:bg-black selection:text-white">
+
+    <!-- PAGE 1 : LANDING PAGE -->
+    <div id="page1" class="absolute inset-0 w-full h-full bg-image flex flex-col z-10 transition-opacity duration-1000">
+        <div class="absolute inset-0 bg-black/40"></div>
+
+        <header class="relative z-20 flex justify-between items-center p-8 md:p-12 w-full uppercase tracking-widest text-sm md:text-base font-medium">
+            <div>Pablo VARO</div>
+            <div class="flex items-center gap-3">
+                <a href="https://www.st-etienne.archi.fr/" target="_blank" rel="noopener noreferrer">
+    <img src="img/ensase-logo.png" alt="ENSASE" class="h-6 md:h-8 w-auto object-contain" data-fallback="true">
+</a>
+            </div>
+        </header>
+
+        <main class="relative z-20 flex-1 flex items-center justify-center">
+            <h1 id="portfolio-title" class="text-5xl md:text-8xl lg:text-[9rem] font-light tracking-[0.15em] cursor-pointer" onclick="explodePortfolio()">
+                <span class="letter">P</span><span class="letter">O</span><span class="letter">R</span><span class="letter">T</span><span class="letter">F</span><span class="letter">O</span><span class="letter">L</span><span class="letter">I</span><span class="letter">O</span>
+            </h1>
+        </main>
+    </div>
+
+    <!-- OVERLAY BLANC DE TRANSITION -->
+    <div id="white-overlay" class="absolute inset-0 bg-white opacity-0 pointer-events-none transition-opacity duration-[1s] z-20"></div>
+
+    <!-- PAGE 2 : CATÉGORIES -->
+    <div id="page2" class="absolute inset-0 w-full h-full bg-white flex flex-col items-center justify-center gap-12 md:gap-24 z-30 opacity-0 pointer-events-none text-black">
+
+        <a href="#" onclick="openProjects(event)" class="group relative block text-4xl sm:text-6xl md:text-8xl tracking-[0.2em] font-light hover:text-gray-400 transition-colors duration-300 uppercase" id="word-projects">
+            <span class="letter">P</span><span class="letter">R</span><span class="letter">O</span><span class="letter">J</span><span class="letter">E</span><span class="letter">T</span><span class="letter">S</span>
+        </a>
+
+        <a href="#" onclick="openExperiences(event)" class="group relative block text-4xl sm:text-6xl md:text-8xl tracking-[0.2em] font-light hover:text-gray-400 transition-colors duration-300 uppercase" id="word-experiences">
+            <span class="letter">E</span><span class="letter">X</span><span class="letter">P</span><span class="letter">E</span><span class="letter">R</span><span class="letter">I</span><span class="letter">E</span><span class="letter">N</span><span class="letter">C</span><span class="letter">E</span><span class="letter">S</span>
+        </a>
+
+    </div>
+
+    <!-- PAGE 3 : EXPERIENCES / CV -->
+    <div id="page3" class="absolute inset-0 w-full min-h-screen bg-white z-40 opacity-0 pointer-events-none hidden text-black overflow-y-auto">
+        <div class="max-w-screen-2xl mx-auto p-6 md:p-12 lg:p-20">
+
+            <button onclick="closeExperiences()" class="group flex items-center gap-4 text-sm tracking-[0.2em] uppercase font-medium text-black hover:text-gray-400 transition-colors mb-16 md:mb-24">
+                <svg class="w-6 h-6 transform group-hover:-translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Retour
+            </button>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+
+                <!-- Colonne gauche : remplie dynamiquement par js/render.js depuis js/data.js -->
+                <div id="profile-content" class="lg:col-span-4 flex flex-col gap-12 lg:sticky lg:top-20 self-start">
+                    <p class="content-error">Chargement du profil…</p>
+                </div>
+
+                <!-- Colonne droite : timeline remplie dynamiquement -->
+                <div id="experiences-list" class="lg:col-span-8 flex flex-col mt-8 lg:mt-0">
+                    <p class="content-error">Chargement des expériences…</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 4 : PROJECTS -->
+    <div id="page4" class="absolute inset-0 w-full min-h-screen bg-white z-40 opacity-0 pointer-events-none hidden text-black overflow-y-auto">
+        <div class="max-w-screen-2xl mx-auto p-6 md:p-12 lg:p-20">
+
+            <button onclick="closeProjects()" class="group flex items-center gap-4 text-sm tracking-[0.2em] uppercase font-medium text-black hover:text-gray-400 transition-colors mb-16 md:mb-24">
+                <svg class="w-6 h-6 transform group-hover:-translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Retour
+            </button>
+
+            <!-- SECTION 1: CONCEPTION (3 projets -> grille 3 colonnes) -->
+            <section class="mb-24 md:mb-32">
+                <div class="flex items-baseline justify-between border-b border-black pb-4 mb-10">
+                    <h2 class="text-2xl md:text-4xl font-light tracking-[0.2em] uppercase">Conception</h2>
+                    <span class="text-xs md:text-sm tracking-[0.2em] uppercase text-gray-400">Projets de conception d'architectures</span>
+                </div>
+                <div id="conception-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <p class="content-error">Chargement des projets…</p>
+                </div>
+            </section>
+
+            <!-- SECTION 2: ANALYSES (même grille que Conception) -->
+            <section class="mb-24 md:mb-32">
+                <div class="flex items-baseline justify-between border-b border-black pb-4 mb-10">
+                    <h2 class="text-2xl md:text-4xl font-light tracking-[0.2em] uppercase">Analyses</h2>
+                    <span class="text-xs md:text-sm tracking-[0.2em] uppercase text-gray-400">Etudes et analyses d'architectures</span>
+                </div>
+                <div id="analyse-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <p class="content-error">Chargement des projets…</p>
+                </div>
+            </section>
+
+            <!-- SECTION 3: WORKSHOPS (même grille, taille de vignette identique) -->
+            <section class="mb-16">
+                <div class="flex items-baseline justify-between border-b border-black pb-4 mb-10">
+                    <h2 class="text-2xl md:text-4xl font-light tracking-[0.2em] uppercase">Workshops</h2>
+                    <span class="text-xs md:text-sm tracking-[0.2em] uppercase text-gray-400">Etude et travail des matériaux</span>
+                </div>
+                <div id="objet-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <p class="content-error">Chargement des projets…</p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- PAGE 5: PROJECT DETAIL ("Cartouche" layout)
+         Scroll-snap : chaque bloc occupe un écran et se centre au scroll,
+         pour que la molette "cale" naturellement sur chaque section plutôt
+         que de s'arrêter n'importe où. -->
+    <div id="page5" class="absolute inset-0 w-full min-h-screen bg-white z-50 opacity-0 pointer-events-none hidden text-black overflow-y-auto scroll-smooth">
+        <div class="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-20">
+
+            <!-- Flèche retour + fil d'ariane, toujours visible pendant le scroll (sticky). -->
+            <div class="sticky top-0 z-10 bg-white/95 backdrop-blur-sm flex flex-wrap items-center gap-x-6 gap-y-3 py-6 md:py-8">
+                <button onclick="closeProjectDetail()" class="group flex items-center gap-4 text-sm tracking-[0.2em] uppercase font-medium text-black hover:text-gray-400 transition-colors">
+                    <svg class="w-6 h-6 transform group-hover:-translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    Retour
+                </button>
+                <nav class="flex items-center gap-3 text-xs tracking-[0.2em] uppercase text-gray-400">
+                    <span>/</span>
+                    <span id="detail-breadcrumb-title" class="text-gray-500"></span>
+                </nav>
+            </div>
+
+            <!-- 1. CARTOUCHE + IMAGE D'APPEL : texte à gauche, image portrait à droite. -->
+            <header class="min-h-[60vh] lg:min-h-screen flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16 xl:gap-24 border-b border-black pb-12 lg:pb-16">
+                <div class="lg:w-1/2 flex flex-col justify-center gap-10 lg:gap-14 order-2 lg:order-1">
+                    <div class="max-w-xl">
+                        <h1 id="detail-title" class="text-4xl md:text-6xl font-light tracking-wide leading-tight mb-6"></h1>
+                        <p id="detail-manifesto" class="text-lg md:text-xl font-light italic text-gray-500"></p>
+                    </div>
+                    <dl id="detail-meta" class="grid grid-cols-2 gap-x-8 gap-y-3 text-xs uppercase tracking-[0.15em] max-w-xl"></dl>
+                </div>
+                <div class="lg:w-1/2 flex justify-center order-1 lg:order-2">
+                    <div id="detail-hero-frame" class="w-full bg-gray-100 overflow-hidden" style="aspect-ratio: 10 / 13; max-height: 78vh; max-width: 100%;">
+                        <img id="detail-hero-image" class="w-full h-full object-cover object-center" alt="">
+                    </div>
+                </div>
+            </header>
+
+            <!-- 2. PROCESS (white space) -->
+            <section id="detail-process-section" class="min-h-screen flex flex-col justify-center">
+                <h2 class="text-xs uppercase tracking-[0.2em] text-gray-400 mb-10 md:mb-14">Processus</h2>
+                <div id="detail-process-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-16 md:gap-24"></div>
+            </section>
+
+            <!-- 3. TECHNIQUE (plans / coupes), regroupés par paires : un écran par paire,
+                 rempli dynamiquement par render.js selon l'ordre du tableau "technical" de data.js. -->
+            <section id="detail-technical-section">
+                <h2 class="text-xs uppercase tracking-[0.2em] text-gray-400 pt-16 md:pt-20">Dessins</h2>
+                <div id="detail-technical-grid" class="flex flex-col"></div>
+            </section>
+
+            <!-- 4. DÉTAIL CONSTRUCTIF, rempli par render.js. Un projet peut définir
+                 "tectonic" comme un tableau (voir data.js, projet "Construction en Bois"). -->
+            <section id="detail-tectonic-section" class="min-h-screen flex flex-col justify-center">
+                <h2 id="detail-tectonic-title" class="text-xs uppercase tracking-[0.2em] text-gray-400 mb-10 md:mb-14">Détail</h2>
+                <div id="detail-tectonic-grid" class="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16 w-full px-6"></div>
+            </section>
+
+            <!-- 5. Navigation projet précédent / suivant -->
+            <footer class="flex flex-col justify-center gap-8 border-t border-black pt-8 pb-16 md:pb-20">
+                <div class="flex items-center justify-between text-xs tracking-[0.2em] uppercase">
+                    <button id="detail-prev-btn" type="button" class="group flex items-center gap-3 text-gray-500 hover:text-black transition-colors">
+                        <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        <span>Projet Précédent</span>
+                    </button>
+                    <button id="detail-next-btn" type="button" class="group flex items-center gap-3 text-gray-500 hover:text-black transition-colors">
+                        <span>Projet Suivant</span>
+                        <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+
+    <!-- Modale galerie : expériences + plans/coupes de projet. Navigation par flèches uniquement. -->
+    <div id="gallery-modal" class="hidden fixed inset-0 bg-black/95 z-[60] flex-col p-4 md:p-10">
+        <button onclick="closeGallery()" aria-label="Close gallery"
+                class="fixed top-6 right-6 md:top-10 md:right-10 text-white/70 hover:text-white transition-colors z-[61]">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <div class="w-full h-full max-w-[92vw] mx-auto flex flex-col gap-4 md:gap-6 pt-10 md:pt-2">
+
+            <!-- Image principale : occupe tout l'espace disponible, ne déborde jamais de l'écran -->
+            <div class="relative flex-1 min-h-0 flex items-center justify-center">
+                <div id="gallery-nav" class="hidden items-center justify-between w-full absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-1 md:px-4 pointer-events-none z-10">
+                    <button onclick="navigateGallery(-1)" aria-label="Previous image"
+                            class="pointer-events-auto text-white/70 hover:text-white transition-colors p-2 bg-black/30 hover:bg-black/50">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+                    <button onclick="navigateGallery(1)" aria-label="Next image"
+                            class="pointer-events-auto text-white/70 hover:text-white transition-colors p-2 bg-black/30 hover:bg-black/50">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <figure class="h-full max-w-full w-full flex flex-col items-center justify-center gap-4 min-h-0">
+                    <img id="gallery-image" src="" alt="" class="flex-1 min-h-0 w-auto max-w-full object-contain transition-opacity duration-300 ease-out">
+                    <figcaption class="shrink-0 flex items-center gap-4 text-white/70 uppercase tracking-[0.15em] text-xs md:text-sm">
+                        <span id="gallery-caption"></span>
+                        <span id="gallery-counter" class="text-white/40"></span>
+                        <span class="hidden md:inline text-white/30 normal-case tracking-normal">— Molette ou double-clic pour zoomer</span>
+                        <a id="gallery-pdf-link" href="#" target="_blank" rel="noopener" class="hidden text-white/70 hover:text-white underline underline-offset-4 transition-colors">Voir le PDF ↗</a>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Scripts, dans l'ordre : données -> rendu -> navigation/animations -->
+    <script src="js/data.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- Statistiques de visite (GoatCounter, gratuit, sans cookies).
+         À ACTIVER : crée un compte gratuit sur https://www.goatcounter.com/signup,
+         puis remplace "TON-CODE" ci-dessous par le code donné (visible dans l'URL
+         de ton tableau de bord, ex. "pablo-varo" pour pablo-varo.goatcounter.com). -->
+    <script data-goatcounter="https://TON-CODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

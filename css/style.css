@@ -1,0 +1,99 @@
+/* ==========================================================================
+   Portfolio Pablo VARO — feuille de style
+   ========================================================================== */
+
+body {
+    font-family: 'Jost', sans-serif;
+    margin: 0;
+    overflow: hidden; /* Empêche le scroll pendant l'animation */
+    background-color: #000;
+}
+
+/* L'image de fond avec un overlay sombre pour la lisibilité */
+.bg-image {
+    background-image: url('../img/accueil.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Garantit que les lettres ont une boîte de rendu stricte pour l'animation */
+.letter {
+    display: inline-block;
+    line-height: 1;
+}
+
+/* Effet de grossissement du mot PORTFOLIO au survol */
+#portfolio-title {
+    /* Taille fluide qui s'adapte à la largeur de l'écran : évite que le mot
+       devienne trop grand sur les écrans moyens/larges et déborde au survol. */
+    font-size: clamp(3rem, 11vw, 10.5rem);
+    /* Empêche le retour à la ligne : si le mot est trop large, il déborde
+       proprement au lieu de se scinder sur deux lignes. */
+    white-space: nowrap;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+                letter-spacing 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+#portfolio-title:hover {
+    /* Grossissement plus modéré pour rester dans l'écran */
+    transform: scale(1.08);
+    letter-spacing: 0.2em;
+}
+
+/* Personnalisation de la barre de défilement pour un look épuré */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+
+/* Effet sur les images de la grille projets */
+.cv-image {
+    transition: transform 0.5s ease;
+    background-color: #e5e5e5; /* évite un flash blanc pendant le chargement */
+}
+.cv-image:hover {
+    transform: scale(1.02);
+}
+
+/* --------------------------------------------------------------------------
+   Gestion des erreurs : image indisponible (voir js/render.js)
+   -------------------------------------------------------------------------- */
+.img-broken {
+    filter: none !important;
+    object-fit: contain !important;
+    padding: 2rem;
+    opacity: 0.35;
+}
+
+.content-error {
+    padding: 2rem 0;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #9ca3af; /* gray-400 */
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Focus clavier visible (accessibilité) */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 4px;
+}
+
+/* Respect de la préférence "réduire les animations" */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+    }
+}
