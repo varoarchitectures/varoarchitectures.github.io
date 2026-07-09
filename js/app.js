@@ -15,169 +15,123 @@ function getEl(id) {
     return el;
 }
 
-function openExperiences(e) {
-    if (e) e.preventDefault();
-    try {
-        const p2 = getEl("page2");
-        const p3 = getEl("page3");
-        if (!p2 || !p3) return;
+/* --------------------------------------------------------------------------
+   Durées d'animation, centralisées ici plutôt qu'éparpillées dans le code.
+   -------------------------------------------------------------------------- */
+const DURATIONS = {
+    CATEGORY_OUT: 600,   // page2 -> page3/page4 : disparition du menu de catégories
+    CATEGORY_IN: 800,    // apparition de la page de destination (expériences/projets)
+    DETAIL_OUT: 500,     // page4 -> page5 : disparition de la grille de projets
+    DETAIL_IN: 700,      // apparition de la page de détail projet
+    DETAIL_CLOSE: 600,   // page5 -> page4 : retour à la grille de projets
+    PROJECT_NAV: 350     // fondu "Projet précédent/suivant" (reste sur page5)
+};
 
-        p2.style.transition = "opacity 0.6s ease";
-        p2.style.opacity = "0";
-        p2.style.pointerEvents = "none";
+/* --------------------------------------------------------------------------
+   Transition générique entre deux "pages" (divs) du site : remplace les
+   4 fonctions quasi identiques openExperiences/closeExperiences/openProjects/
+   closeProjects qui existaient avant. Fait disparaître fromEl, puis affiche
+   toEl. onBeforeShow (optionnel) s'exécute juste avant que toEl ne réapparaisse
+   (utilisé pour rendre le contenu d'un projet avant d'afficher page5).
+   -------------------------------------------------------------------------- */
+function switchPage(fromEl, toEl, options) {
+    const opts = options || {};
+    const outDuration = opts.outDuration || DURATIONS.CATEGORY_OUT;
+    const inDuration = opts.inDuration || DURATIONS.CATEGORY_IN;
+    const display = opts.display || "block";
+    const onBeforeShow = opts.onBeforeShow;
+
+    try {
+        if (!fromEl || !toEl) return;
+
+        fromEl.style.transition = "opacity " + outDuration + "ms ease";
+        fromEl.style.opacity = "0";
+        fromEl.style.pointerEvents = "none";
 
         setTimeout(() => {
-            p2.style.display = "none";
+            fromEl.style.display = "none";
 
-            p3.style.display = "block";
-            p3.scrollTop = 0;
+            if (typeof onBeforeShow === "function") onBeforeShow();
 
-            void p3.offsetWidth;
+            toEl.style.display = display;
+            toEl.scrollTop = 0;
 
-            p3.style.transition = "opacity 0.8s ease";
-            p3.style.opacity = "1";
-            p3.style.pointerEvents = "auto";
-        }, 600);
+            void toEl.offsetWidth; // force reflow pour que la transition d'entrée se joue
+
+            toEl.style.transition = "opacity " + inDuration + "ms ease";
+            toEl.style.opacity = "1";
+            toEl.style.pointerEvents = "auto";
+        }, outDuration);
     } catch (err) {
-        console.error("[app] Erreur dans openExperiences :", err);
+        console.error("[app] Erreur dans switchPage :", err);
     }
 }
 
+function openExperiences(e) {
+    if (e) e.preventDefault();
+    switchPage(getEl("page2"), getEl("page3"), {
+        outDuration: DURATIONS.CATEGORY_OUT,
+        inDuration: DURATIONS.CATEGORY_IN,
+        display: "block"
+    });
+    setRoute("#/experiences");
+}
+
 function closeExperiences() {
-    try {
-        const p2 = getEl("page2");
-        const p3 = getEl("page3");
-        if (!p2 || !p3) return;
-
-        p3.style.opacity = "0";
-        p3.style.pointerEvents = "none";
-
-        setTimeout(() => {
-            p3.style.display = "none";
-
-            p2.style.display = "flex";
-
-            void p2.offsetWidth;
-
-            p2.style.opacity = "1";
-            p2.style.pointerEvents = "auto";
-        }, 800);
-    } catch (err) {
-        console.error("[app] Erreur dans closeExperiences :", err);
-    }
+    switchPage(getEl("page3"), getEl("page2"), {
+        outDuration: DURATIONS.CATEGORY_IN,
+        inDuration: DURATIONS.CATEGORY_OUT,
+        display: "flex"
+    });
+    setRoute("#/");
 }
 
 function openProjects(e) {
     if (e) e.preventDefault();
-    try {
-        const p2 = getEl("page2");
-        const p4 = getEl("page4");
-        if (!p2 || !p4) return;
-
-        p2.style.transition = "opacity 0.6s ease";
-        p2.style.opacity = "0";
-        p2.style.pointerEvents = "none";
-
-        setTimeout(() => {
-            p2.style.display = "none";
-
-            p4.style.display = "block";
-            p4.scrollTop = 0;
-
-            void p4.offsetWidth;
-
-            p4.style.transition = "opacity 0.8s ease";
-            p4.style.opacity = "1";
-            p4.style.pointerEvents = "auto";
-        }, 600);
-    } catch (err) {
-        console.error("[app] Erreur dans openProjects :", err);
-    }
+    switchPage(getEl("page2"), getEl("page4"), {
+        outDuration: DURATIONS.CATEGORY_OUT,
+        inDuration: DURATIONS.CATEGORY_IN,
+        display: "block"
+    });
+    setRoute("#/projets");
 }
 
 function closeProjects() {
-    try {
-        const p2 = getEl("page2");
-        const p4 = getEl("page4");
-        if (!p2 || !p4) return;
-
-        p4.style.opacity = "0";
-        p4.style.pointerEvents = "none";
-
-        setTimeout(() => {
-            p4.style.display = "none";
-
-            p2.style.display = "flex";
-
-            void p2.offsetWidth;
-
-            p2.style.opacity = "1";
-            p2.style.pointerEvents = "auto";
-        }, 800);
-    } catch (err) {
-        console.error("[app] Erreur dans closeProjects :", err);
-    }
+    switchPage(getEl("page4"), getEl("page2"), {
+        outDuration: DURATIONS.CATEGORY_IN,
+        inDuration: DURATIONS.CATEGORY_OUT,
+        display: "flex"
+    });
+    setRoute("#/");
 }
 
 /* --------------------------------------------------------------------------
    Page détail projet (page5, layout "Cartouche")
    -------------------------------------------------------------------------- */
-window.openProject = function (projectId) {
-    try {
-        const p4 = getEl("page4");
-        const p5 = getEl("page5");
-        if (!p4 || !p5) return;
-
-        p4.style.transition = "opacity 0.5s ease";
-        p4.style.opacity = "0";
-        p4.style.pointerEvents = "none";
-
-        setTimeout(() => {
-            p4.style.display = "none";
-
+window.openProject = function (projectId, options) {
+    const opts = options || {};
+    switchPage(getEl("page4"), getEl("page5"), {
+        outDuration: DURATIONS.DETAIL_OUT,
+        inDuration: DURATIONS.DETAIL_IN,
+        display: "block",
+        onBeforeShow: function () {
             if (typeof window.renderProjectDetail === "function") {
                 window.renderProjectDetail(projectId);
             } else {
                 console.warn("[app] renderProjectDetail() n'est pas défini pour :", projectId);
             }
-
-            p5.style.display = "block";
-            p5.scrollTop = 0;
-
-            void p5.offsetWidth;
-
-            p5.style.transition = "opacity 0.7s ease";
-            p5.style.opacity = "1";
-            p5.style.pointerEvents = "auto";
-        }, 500);
-    } catch (err) {
-        console.error("[app] Erreur dans openProject :", err);
-    }
+        }
+    });
+    if (opts.updateRoute !== false) setRoute("#/projets/" + encodeURIComponent(projectId));
 };
 
 window.closeProjectDetail = function () {
-    try {
-        const p4 = getEl("page4");
-        const p5 = getEl("page5");
-        if (!p4 || !p5) return;
-
-        p5.style.opacity = "0";
-        p5.style.pointerEvents = "none";
-
-        setTimeout(() => {
-            p5.style.display = "none";
-
-            p4.style.display = "block";
-
-            void p4.offsetWidth;
-
-            p4.style.transition = "opacity 0.6s ease";
-            p4.style.opacity = "1";
-            p4.style.pointerEvents = "auto";
-        }, 600);
-    } catch (err) {
-        console.error("[app] Erreur dans closeProjectDetail :", err);
-    }
+    switchPage(getEl("page5"), getEl("page4"), {
+        outDuration: DURATIONS.DETAIL_CLOSE,
+        inDuration: DURATIONS.DETAIL_CLOSE,
+        display: "block"
+    });
+    setRoute("#/projets");
 };
 
 // Navigation discrète "Projet Précédent / Suivant" : on reste sur page5,
@@ -187,7 +141,7 @@ window.navigateProjectDetail = function (projectId) {
         const p5 = getEl("page5");
         if (!p5 || !projectId) return;
 
-        p5.style.transition = "opacity 0.35s ease";
+        p5.style.transition = "opacity " + DURATIONS.PROJECT_NAV + "ms ease";
         p5.style.opacity = "0";
 
         setTimeout(() => {
@@ -199,7 +153,9 @@ window.navigateProjectDetail = function (projectId) {
             void p5.offsetWidth;
 
             p5.style.opacity = "1";
-        }, 350);
+        }, DURATIONS.PROJECT_NAV);
+
+        setRoute("#/projets/" + encodeURIComponent(projectId));
     } catch (err) {
         console.error("[app] Erreur dans navigateProjectDetail :", err);
     }
@@ -761,4 +717,120 @@ function runExplodeAnimation() {
             document.body.style.overflow = "auto";
         }
     }
+}
+
+/* --------------------------------------------------------------------------
+   Page 1 : ouverture au clic, au clavier (Entrée/Espace) et à la molette.
+   Remplace l'ancien "onclick" inline dans le HTML, qui n'était accessible
+   qu'à la souris (un <div> n'est pas focusable/activable au clavier par défaut).
+   -------------------------------------------------------------------------- */
+function setupPage1Entry() {
+    const page1 = getEl("page1");
+    if (!page1) return;
+
+    page1.addEventListener("click", explodePortfolio);
+
+    page1.addEventListener("keydown", function (e) {
+        // Ignore les touches qui remontent depuis un enfant interactif (ex. le
+        // lien ENSASE) : on ne veut déclencher l'ouverture que si c'est bien
+        // la page elle-même qui a le focus, pas un élément qu'elle contient.
+        if (e.target !== page1) return;
+        if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+            e.preventDefault();
+            explodePortfolio();
+        }
+    });
+
+    // Un simple mouvement de molette sur la page d'accueil ouvre aussi le
+    // portfolio (pratique pour un visiteur qui essaie de scroller la page).
+    page1.addEventListener(
+        "wheel",
+        function () {
+            explodePortfolio();
+        },
+        { passive: true }
+    );
+}
+
+/* --------------------------------------------------------------------------
+   Routing léger par hash : #/, #/experiences, #/projets, #/projets/<id>
+   Permet de partager un lien direct vers un projet précis, d'utiliser les
+   boutons précédent/suivant du navigateur, et donne une URL par page utile
+   pour le référencement (voir aussi robots.txt et sitemap.xml).
+   -------------------------------------------------------------------------- */
+let isApplyingRoute = false;
+
+function setRoute(hash) {
+    if (isApplyingRoute) return; // évite de redéclencher applyRoute en boucle
+    if (location.hash === hash) return;
+    try {
+        history.pushState(null, "", hash);
+    } catch (err) {
+        location.hash = hash;
+    }
+}
+
+function parseRoute() {
+    const raw = (location.hash || "").replace(/^#\/?/, "");
+    const parts = raw.split("/").filter(Boolean).map(decodeURIComponent);
+
+    if (parts[0] === "projets" && parts[1]) return { page: "detail", projectId: parts[1] };
+    if (parts[0] === "projets") return { page: "projects" };
+    if (parts[0] === "experiences") return { page: "experiences" };
+    return { page: "home" };
+}
+
+// Affiche directement la bonne page (chargement d'un lien direct, ou clic sur
+// précédent/suivant du navigateur), sans rejouer l'animation d'introduction.
+function showPageImmediately(pageId, displayValue) {
+    ["page1", "page2", "page3", "page4", "page5"].forEach((id) => {
+        const el = getEl(id);
+        if (!el) return;
+        const isTarget = id === pageId;
+        el.style.transition = "none";
+        el.style.display = isTarget ? displayValue : "none";
+        el.style.opacity = isTarget ? "1" : "0";
+        el.style.pointerEvents = isTarget ? "auto" : "none";
+    });
+    document.body.style.overflow = "auto";
+}
+
+function applyRoute() {
+    try {
+        isApplyingRoute = true;
+        const route = parseRoute();
+
+        if (route.page === "home") return; // l'accueil (page1) reste tel quel
+
+        // On saute l'animation d'intro : la page 1 ne doit plus réagir au clic.
+        introAnimationStarted = true;
+
+        if (route.page === "experiences") {
+            showPageImmediately("page3", "block");
+        } else if (route.page === "projects") {
+            showPageImmediately("page4", "block");
+        } else if (route.page === "detail") {
+            if (typeof window.renderProjectDetail === "function") {
+                window.renderProjectDetail(route.projectId);
+            }
+            showPageImmediately("page5", "block");
+        }
+    } catch (err) {
+        console.error("[app] Erreur lors de l'application de la route :", err);
+    } finally {
+        isApplyingRoute = false;
+    }
+}
+
+window.addEventListener("popstate", applyRoute);
+
+function initApp() {
+    setupPage1Entry();
+    applyRoute();
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initApp);
+} else {
+    initApp();
 }

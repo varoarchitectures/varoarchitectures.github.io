@@ -12,8 +12,13 @@ window.SITE_DATA = {
         bio: "Engagé, sérieux, sociable et conscient du travail à accomplir. Je travaille en toute autonomie et je me donne à fond.",
         contact: {
             address: "196 impasse du limon, Carpentras, France",
-            email: "pablovaro@orange.fr",
-            phone: "+33 7 49 39 19 72",
+            // Email et téléphone stockés sous forme de codes de caractères plutôt
+            // qu'en texte brut : ça évite qu'un robot spammeur les moissonne en
+            // scannant simplement ce fichier, sans rien changer pour un recruteur
+            // humain (js/render.js les décode et fabrique un lien mailto/tel normal,
+            // cliquable, exactement comme avant).
+            emailParts: [112, 97, 98, 108, 111, 118, 97, 114, 111, 64, 111, 114, 97, 110, 103, 101, 46, 102, 114],
+            phoneParts: [43, 51, 51, 32, 55, 32, 52, 57, 32, 51, 57, 32, 49, 57, 32, 55, 50],
             permit: "Permis B"
         },
         formation: [

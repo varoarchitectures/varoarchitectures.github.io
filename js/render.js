@@ -27,6 +27,15 @@
             .replace(/>/g, "&gt;");
     }
 
+    // Décode un champ de contact obfusqué (tableau de codes de caractères, voir
+    // js/data.js). But : éviter que l'email/téléphone traînent en clair dans le
+    // HTML/JS statique, moissonnable par un simple robot spammeur, tout en
+    // gardant un lien mailto/tel normal et cliquable pour un visiteur humain.
+    function decodeContactField(parts) {
+        if (!Array.isArray(parts)) return "";
+        return String.fromCharCode.apply(null, parts);
+    }
+
     function showSectionError(container, message) {
         if (!container) return;
         container.innerHTML =
@@ -62,6 +71,10 @@
                 .map((l) => "<li>" + escapeHtml(l) + "</li>")
                 .join("");
 
+            const email = decodeContactField(p.contact.emailParts);
+            const phone = decodeContactField(p.contact.phoneParts);
+            const phoneHref = phone.replace(/[^+\d]/g, "");
+
             container.innerHTML = `
                 <div>
                     <h2 class="text-4xl md:text-5xl font-light tracking-widest uppercase mb-2">${escapeHtml(p.name)}</h2>
@@ -75,8 +88,8 @@
                     <h3 class="uppercase tracking-[0.15em] text-sm font-medium mb-4">Contact</h3>
                     <ul class="space-y-2 font-light text-sm text-gray-700">
                         <li>${escapeHtml(p.contact.address)}</li>
-                        <li><a href="mailto:${escapeHtml(p.contact.email)}" class="hover:text-black hover:underline underline-offset-4">${escapeHtml(p.contact.email)}</a></li>
-                        <li>${escapeHtml(p.contact.phone)}</li>
+                        <li><a href="mailto:${escapeHtml(email)}" class="hover:text-black hover:underline underline-offset-4">${escapeHtml(email)}</a></li>
+                        <li><a href="tel:${escapeHtml(phoneHref)}" class="hover:text-black hover:underline underline-offset-4">${escapeHtml(phone)}</a></li>
                         <li>${escapeHtml(p.contact.permit)}</li>
                     </ul>
                 </div>
@@ -189,7 +202,7 @@
             container.innerHTML = items
                 .map(
                     (proj) => `
-                        <a href="#" data-project-id="${escapeHtml(proj.id)}" class="project-link group block">
+                        <a href="#/projets/${escapeHtml(proj.id)}" data-project-id="${escapeHtml(proj.id)}" class="project-link group block">
                             <div class="relative w-full ${aspectClass} overflow-hidden bg-gray-100">
                                 <img src="${escapeHtml(proj.image)}" alt="${escapeHtml(proj.alt || proj.title)}"
                                      loading="lazy" decoding="async"
