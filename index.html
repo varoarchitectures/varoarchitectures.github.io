@@ -35,20 +35,20 @@
 <body class="text-white antialiased selection:bg-black selection:text-white">
 
     <!-- PAGE 1 : LANDING PAGE -->
-    <div id="page1" class="absolute inset-0 w-full h-full bg-image flex flex-col z-10 transition-opacity duration-1000">
+    <div id="page1" class="absolute inset-0 w-full h-full bg-image flex flex-col z-10 transition-opacity duration-1000 cursor-pointer" onclick="explodePortfolio()">
         <div class="absolute inset-0 bg-black/40"></div>
 
         <header class="relative z-20 flex justify-between items-center p-8 md:p-12 w-full uppercase tracking-widest text-sm md:text-base font-medium">
             <div>Pablo VARO</div>
             <div class="flex items-center gap-3">
-                <a href="https://www.st-etienne.archi.fr/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.st-etienne.archi.fr/" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
     <img src="img/ensase-logo.png" alt="ENSASE" class="h-6 md:h-8 w-auto object-contain" data-fallback="true">
 </a>
             </div>
         </header>
 
         <main class="relative z-20 flex-1 flex items-center justify-center">
-            <h1 id="portfolio-title" class="text-5xl md:text-8xl lg:text-[9rem] font-light tracking-[0.15em] cursor-pointer" onclick="explodePortfolio()">
+            <h1 id="portfolio-title" class="text-5xl md:text-8xl lg:text-[9rem] font-light tracking-[0.15em]">
                 <span class="letter">P</span><span class="letter">O</span><span class="letter">R</span><span class="letter">T</span><span class="letter">F</span><span class="letter">O</span><span class="letter">L</span><span class="letter">I</span><span class="letter">O</span>
             </h1>
         </main>
