@@ -740,16 +740,6 @@ function setupPage1Entry() {
             explodePortfolio();
         }
     });
-
-    // Un simple mouvement de molette sur la page d'accueil ouvre aussi le
-    // portfolio (pratique pour un visiteur qui essaie de scroller la page).
-    page1.addEventListener(
-        "wheel",
-        function () {
-            explodePortfolio();
-        },
-        { passive: true }
-    );
 }
 
 /* --------------------------------------------------------------------------

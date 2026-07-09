@@ -295,9 +295,25 @@
             const heroImg = document.getElementById("detail-hero-image");
             const heroFrame = document.getElementById("detail-hero-frame");
             if (heroImg) {
+                // Évite d'afficher brièvement l'image du projet précédent : on
+                // masque l'image le temps que la nouvelle soit chargée, comme
+                // pour la galerie (voir js/app.js, renderGalleryImage).
+                heroImg.style.transition = "opacity 0.2s ease";
+                heroImg.style.opacity = "0";
+
+                const revealHero = () => {
+                    heroImg.style.opacity = "1";
+                };
+                heroImg.addEventListener("load", revealHero, { once: true });
+
                 heroImg.src = d.hero || proj.image || "";
                 heroImg.alt = proj.alt || proj.title;
                 attachImageFallback(heroImg);
+
+                if (heroImg.complete && heroImg.naturalWidth > 0) {
+                    heroImg.removeEventListener("load", revealHero);
+                    revealHero();
+                }
 
                 // Par défaut : portrait 10:13 recadré (object-cover). Si l'image héro
                 // est un plan/une planche, "heroFit: 'contain'" dans data.js l'affiche entière.
