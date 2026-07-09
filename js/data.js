@@ -37,15 +37,15 @@ window.SITE_DATA = {
             description: "Découverte et expérimentations de différentes techniques de la construction en terre avec 2 architectes/maçons spécialistes : bauge, pisé, adobe, torchis.",
             detail: "Application directe pour l'isolation en terre allégée et en terre paille d'un mur.",
             images: [
-                "img/terre/bauge.jpg",
-                "img/terre/adobe.jpg",
-                "img/terre/fresque.jpg",
-                "img/terre/barquette.jpg",
-                "img/terre/paille.jpg",
-                "img/terre/terre_paille.jpg",
-                "img/terre/iso_face.jpg",
-                "img/terre/tas.jpg",
-                "img/terre/planche.jpg",
+                "img/terre/bauge.webp",
+                "img/terre/adobe.webp",
+                "img/terre/fresque.webp",
+                "img/terre/barquette.webp",
+                "img/terre/paille.webp",
+                "img/terre/terre_paille.webp",
+                "img/terre/iso_face.webp",
+                "img/terre/tas.webp",
+                "img/terre/planche.webp",
             ]
         },
         {
@@ -65,13 +65,13 @@ window.SITE_DATA = {
             description: "Apprentissage et pratique des techniques de construction traditionnelles.",
             detail: "Fabrication de mortier, montage de murs, terrassement, taille de pierre.",
             images: [
-                "img/morimond/taille.jpg",
-                "img/morimond/niveau.jpg",
-                "img/morimond/pose.jpg",
-                "img/morimond/joints.jpg",
-                "img/morimond/remplissage.jpg",
-                "img/morimond/niveau.jpg",
-                "img/morimond/angle.jpg"
+                "img/morimond/taille.webp",
+                "img/morimond/niveau.webp",
+                "img/morimond/pose.webp",
+                "img/morimond/joints.webp",
+                "img/morimond/remplissage.webp",
+                "img/morimond/niveau.webp",
+                "img/morimond/angle.webp"
             ]
         },
         {
@@ -82,14 +82,14 @@ window.SITE_DATA = {
             description: "Recherche de partenaires et de financements, planification du projet. Apprentissage et pratique de l'agriculture biologique.",
             detail: "Vinaigre de bois, greffe, engrais, marcottage, plantation de divers fruits et légumes.",
             images: [
-                "img/philippines/class.jpg",
-                "img/philippines/riz.jpg",
-                "img/philippines/sillon.jpg",
-                "img/philippines/graines.jpg",
-                "img/philippines/plantes.jpg",
-                "img/philippines/vers.jpg",
-                "img/philippines/vinaigre.jpg",
-                "img/philippines/photo.jpg"
+                "img/philippines/class.webp",
+                "img/philippines/riz.webp",
+                "img/philippines/sillon.webp",
+                "img/philippines/graines.webp",
+                "img/philippines/plantes.webp",
+                "img/philippines/vers.webp",
+                "img/philippines/vinaigre.webp",
+                "img/philippines/photo.webp"
             ]
         },
         {
@@ -138,9 +138,9 @@ window.SITE_DATA = {
     //   dans un nouvel onglet (toujours net, contrairement au JPG affiché).
     //   Exemple :
     //       technical: [
-    //           { image: "img/plan_s2.jpg", pdf: "pdf/plan_s2.pdf", caption: "Plan de rez-de-chaussée" }
+    //           { image: "img/plan_s2.webp", pdf: "pdf/plan_s2.pdf", caption: "Plan de rez-de-chaussée" }
     //       ],
-    //       tectonic: "img/coupe_pers_s2.jpg",
+    //       tectonic: "img/coupe_pers_s2.webp",
     //       tectonicPdf: "pdf/coupe_pers_s2.pdf"
     //   Mets tes PDF dans un dossier "pdf/" à la racine (à créer), à côté de "img/".
     projects: {
@@ -149,7 +149,7 @@ window.SITE_DATA = {
                 id: "conception-01",
                 title: "Logement pour 3 personnes",
                 meta: "L1 — S2",
-                image: "img/coloc/maquette.png",
+                image: "img/coloc/maquette.webp",
                 alt: "Projet de conception 01",
                 detail: {
                     year: "2024-2025",
@@ -157,20 +157,20 @@ window.SITE_DATA = {
                     teacher: "Sebastien MARTINEZ-BARAT",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: "“Less in enought”, Pier Vittorio Aureli",
-                    hero: "img/coloc/detail.jpg",
+                    hero: "img/coloc/detail.webp",
                     technical: [
-                        { image: "img/coloc/plan.jpg", caption: "Plan" },
-                        { image: "img/coloc/elevation.jpg", caption: "Elevation" }
+                        { image: "img/coloc/plan.webp", caption: "Plan" },
+                        { image: "img/coloc/elevation.webp", caption: "Elevation" }
                     ],
                     technicalOrientation: "landscape",
-                    tectonic: "img/coloc/pers.jpg"
+                    tectonic: "img/coloc/pers.webp"
                 }
             },
             {
                 id: "conception-02",
                 title: "Extension de l'école de jacquard (St Etienne)",
                 meta: "L2 — S3",
-                image: "img/ecole/maquette_site.png",
+                image: "img/ecole/maquette_site.webp",
                 alt: "Projet de conception 02",
                 detail: {
                     year: "2025-2026",
@@ -178,25 +178,25 @@ window.SITE_DATA = {
                     teacher: "Jérome GLAIROUX",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: "la conservation de l'existant. En le dupliquant, l'extension s'élance dans le parc pour s'y ancrer.",
-                    hero: "img/ecole/maquette.png",
+                    hero: "img/ecole/maquette.webp",
                     process: [
-                        { image: "img/ecole/dedoublement.jpg", caption: "Intention initiale" },
-                        { image: "img/ecole/circulation.jpg", caption: "Circulation" },
-                        { image: "img/ecole/axo.jpg", caption: "Axonometrie" }
+                        { image: "img/ecole/dedoublement.webp", caption: "Intention initiale" },
+                        { image: "img/ecole/circulation.webp", caption: "Circulation" },
+                        { image: "img/ecole/axo.webp", caption: "Axonometrie" }
                     ],
                     technical: [
-                        { image: "img/ecole/plan_rez_de_chausse.jpg", caption: "Plan de rez-de-chaussée" },
-                        { image: "img/ecole/coupes.jpg", caption: "Coupes" }
+                        { image: "img/ecole/plan_rez_de_chausse.webp", caption: "Plan de rez-de-chaussée" },
+                        { image: "img/ecole/coupes.webp", caption: "Coupes" }
                     ],
                     technicalOrientation: "landscape",
-                    tectonic: "img/ecole/plan_etages.jpg"
+                    tectonic: "img/ecole/plan_etages.webp"
                 }
             },
             {
                 id: "conception-03",
                 title: "Salle polyvalente et café (St Victor sur Loire)",
                 meta: "L2 — S4",
-                image: "img/cafe/maquette_site.jpg",
+                image: "img/cafe/maquette_site.webp",
                 alt: "Projet de conception 03",
                 detail: {
                     year: "2025-2026",
@@ -204,22 +204,22 @@ window.SITE_DATA = {
                     teacher: "Severin PERREAULT",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: "Rester dans le village, c'est poursuivre le chemin de ronde et y fixer le projet. Enterrer et poser.",
-                    hero: "img/cafe/maquette.png",
+                    hero: "img/cafe/maquette.webp",
                     process: [
-                        { image: "img/cafe/installer.png", caption: "Installer" },
-                        { image: "img/cafe/integrer.png", caption: "Intégrer" },
-                        { image: "img/cafe/organiser.png", caption: "organiser" }
+                        { image: "img/cafe/installer.webp", caption: "Installer" },
+                        { image: "img/cafe/integrer.webp", caption: "Intégrer" },
+                        { image: "img/cafe/organiser.webp", caption: "organiser" }
                     ],
                     technical: [
-                        { image: "img/cafe/plan_masse.jpg", caption: "Plan masse" },
-                        { image: "img/cafe/plans.jpg", caption: "Plans" },
-                        { image: "img/cafe/coupes.jpg", caption: "Coupes" }
+                        { image: "img/cafe/plan_masse.webp", caption: "Plan masse" },
+                        { image: "img/cafe/plans.webp", caption: "Plans" },
+                        { image: "img/cafe/coupes.webp", caption: "Coupes" }
                     ],
                     // 3 planches côte à côte sur ce projet (plan masse, plans,
                     // coupes) au lieu de 2 par défaut : elles sont verticales,
                     // donc les 3 tiennent bien sur un même écran.
                     technicalGroupSize: 3,
-                    tectonic: "img/cafe/maquette_3d.png"
+                    tectonic: "img/cafe/maquette_3d.webp"
                 }
             }
         ],
@@ -228,7 +228,7 @@ window.SITE_DATA = {
                 id: "analyse-01",
                 title: "Ospedale degli innocenti, Filipo BRUNELESCHI, Florence (ITALIE)",
                 meta: "L2 — S3",
-                image: "img/ospedale/maquette_site.png",
+                image: "img/ospedale/maquette_site.webp",
                 alt: "Projet d'analyse 01",
                 detail: {
                     year: "2025-2026",
@@ -236,7 +236,7 @@ window.SITE_DATA = {
                     teacher: "Jérome GLAIROUX",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: "construire un bâtiment, pour façonner une place, pour façonner une ville.",
-                    hero: "img/ospedale/maquette.png",
+                    hero: "img/ospedale/maquette.webp",
                     process: [
                         { image: "img/ospedale/lien.svg", caption: "Lien" },
                         { image: "img/ospedale/prop.svg", caption: "Proportions" },
@@ -244,17 +244,17 @@ window.SITE_DATA = {
 
                     ],
                     technical: [
-                        { image: "img/ospedale/plan.jpg", caption: "Plan" },
-                        { image: "img/ospedale/coupe.jpg", caption: "Coupe" }
+                        { image: "img/ospedale/plan.webp", caption: "Plan" },
+                        { image: "img/ospedale/coupe.webp", caption: "Coupe" }
                     ],
-                    tectonic: "img/ospedale/axo.jpg"
+                    tectonic: "img/ospedale/axo.webp"
                 }
             },
             {
                 id: "analyse-02",
                 title: "Pavillon de tennis, Fernando TAVORA, Quinta de conceiçao (PORTUGAL)",
                 meta: "L2 — S4",
-                image: "img/tavora/maquette_site.png",
+                image: "img/tavora/maquette_site.webp",
                 alt: "Projet d'analyse 02",
                 detail: {
                     year: "2025-2026",
@@ -262,41 +262,41 @@ window.SITE_DATA = {
                     teacher: "Severin PERREAULT",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: "Un pavillon, comme moyen de voir. un dessous et un dessus, ouvrant sur le paysage, partitionnant la nature.",
-                    hero: "img/tavora/maquette.png",
+                    hero: "img/tavora/maquette.webp",
                     process: [
-                        { image: "img/tavora/installer.jpg", caption: "Installer" },
-                        { image: "img/tavora/organiser.jpg", caption: "Organiser" },
-                        { image: "img/tavora/unifier.jpg", caption: "Unifier" },
-                        { image: "img/tavora/vues.jpg", caption: "Vues" }
+                        { image: "img/tavora/installer.webp", caption: "Installer" },
+                        { image: "img/tavora/organiser.webp", caption: "Organiser" },
+                        { image: "img/tavora/unifier.webp", caption: "Unifier" },
+                        { image: "img/tavora/vues.webp", caption: "Vues" }
                     ],
                     // 2 cadres par ligne (2 paires) au lieu de 3, pour que les
                     // 4 planches du process restent côte à côte deux par deux.
                     processColumns: 2,
                     technical: [
-                        { image: "img/tavora/plan_de_masse.jpg", caption: "Plan masse" },
-                        { image: "img/tavora/plan_et_coupes.jpg", caption: "Plan et coupes" }
+                        { image: "img/tavora/plan_de_masse.webp", caption: "Plan masse" },
+                        { image: "img/tavora/plan_et_coupes.webp", caption: "Plan et coupes" }
                     ],
-                    tectonic: "img/tavora/axo.jpg"
+                    tectonic: "img/tavora/axo.webp"
                 }
             },
             {
                 id: "analyse-03",
                 title: "Dymaxion House 1, Richard BUCKMINSTER FULLER (non réalisée)",
                 meta: "L2 — S4",
-                image: "img/dymaxion/maquette_site.png",
+                image: "img/dymaxion/maquette_site.webp",
                 alt: "Projet d'analyse 03",
                 detail: {
                     year: "2025-2026",
                     semester: "L2 — S4",
                     teacher: "Boris HAMZEIAN",
                     manifesto: "Une machine à habiter, un environnement artificiel.",
-                    hero: "img/dymaxion/maquette.png",
+                    hero: "img/dymaxion/maquette.webp",
 
                     technical: [
-                        { image: "img/dymaxion/plan.jpg", caption: "Plan" },
-                        { image: "img/dymaxion/coupe.jpg", caption: "Coupe" }
+                        { image: "img/dymaxion/plan.webp", caption: "Plan" },
+                        { image: "img/dymaxion/coupe.webp", caption: "Coupe" }
                     ],
-                    tectonic: "img/dymaxion/pers.jpg"
+                    tectonic: "img/dymaxion/pers.webp"
                 }
             }
         ],
@@ -305,7 +305,7 @@ window.SITE_DATA = {
                 id: "objet-01",
                 title: "Construction en Bois",
                 meta: "L1 — S2",
-                image: "img/bois/maquette.png",
+                image: "img/bois/maquette.webp",
                 alt: "Workshop 01",
                 detail: {
                     year: "2024-2025",
@@ -313,12 +313,12 @@ window.SITE_DATA = {
                     teacher: "Rémi COLLET",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: "De simples assemblages, pour distribuer des charges et former une structure.",
-                    hero: "img/bois/maquette.png",
+                    hero: "img/bois/maquette.webp",
                     technical: [
-                        { image: "img/bois/plan_et_coupe.jpg", caption: "Plan et coupe" },
-                        { image: "img/bois/axo.jpg", caption: "Axonométrie et détails" }
+                        { image: "img/bois/plan_et_coupe.webp", caption: "Plan et coupe" },
+                        { image: "img/bois/axo.webp", caption: "Axonométrie et détails" }
                     ],
-                    tectonic: ["img/bois/forces.jpg", "img/bois/forces2.jpg"],
+                    tectonic: ["img/bois/forces.webp", "img/bois/forces2.webp"],
                     tectonicTitle: "Etude des forces"
                 }
             },
@@ -326,7 +326,7 @@ window.SITE_DATA = {
                 id: "objet-02",
                 title: "Charpente metallique",
                 meta: "L2 — S3",
-                image: "img/metal/charpente.jpg",
+                image: "img/metal/charpente.webp",
                 alt: "Workshop 02",
                 detail: {
                     year: "2025-2026",
@@ -334,19 +334,19 @@ window.SITE_DATA = {
                     teacher: "Rémi COLLET",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: "Une structure spatiale triangulée en trois dimensions, où chaque rotule fixe participe à la stabilité de l'ensemble.",
-                    hero: "img/metal/affiche.jpg",
+                    hero: "img/metal/affiche.webp",
                     technical: [
-                        { image: "img/metal/plan.jpg", caption: "Plan" },
-                        { image: "img/metal/plan.jpg", caption: "Coupe" }
+                        { image: "img/metal/plan.webp", caption: "Plan" },
+                        { image: "img/metal/plan.webp", caption: "Coupe" }
                     ],
-                    tectonic: ["img/metal/boule.jpg", "img/metal/coupé.jpg"]
+                    tectonic: ["img/metal/boule.webp", "img/metal/coupé.webp"]
                 }
             },
             {
                 id: "objet-03",
                 title: "Construction en Pierre",
                 meta: "L2 — S4",
-                image: "img/pierre/maquette_site.png",
+                image: "img/pierre/maquette_site.webp",
                 alt: "Workshop 03",
                 detail: {
                     year: "2025",
@@ -354,21 +354,21 @@ window.SITE_DATA = {
                     teacher: "À définir",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: "Ici, l'équilibre ne vient pas de la légèreté mais du poids : la masse de pierre travaille contre la gravité plutôt qu'avec elle.",
-                    hero: "img/pierre/maquette.jpg",
+                    hero: "img/pierre/maquette.webp",
                     process: [
-                        { image: "img/pierre/schema_01.jpg", caption: "L’assise (la fondation) : On creuse une tranchée pour poser les plus grosses pierres au sol. Elles doivent être enterrées pour éviter que le mur ne glisse." },
-                        { image: "img/pierre/schema_02.jpg", caption: "Le fruit (l’inclinaison) : Le mur ne doit pas être parfaitement vertical. Il doit s’incliner légèrement vers l’intérieur (entre 10% et 15%). Cela déplace le centre de gravité vers le cœur de la structure." },
-                        { image: "img/pierre/schema_03.jpg", caption: "Les boutisses : Ce sont des pierres longues posées dans le sens de l’épaisseur du mur. Elles traversent le mur de part en part pour lier le parement extérieur et intérieur. Ce sont les «clous» de la structure." },
-                        { image: "img/pierre/schema_04.jpg", caption: "Le calage et le remplissage : On remplit l’intérieur du mur avec de la petite caillasse (le «tout-venant»). Attention : ces petits cailloux ne sont pas jetés au hasard, ils sont bloqués fermement pour empêcher les grosses pierres de bouger" }
+                        { image: "img/pierre/schema_01.webp", caption: "L’assise (la fondation) : On creuse une tranchée pour poser les plus grosses pierres au sol. Elles doivent être enterrées pour éviter que le mur ne glisse." },
+                        { image: "img/pierre/schema_02.webp", caption: "Le fruit (l’inclinaison) : Le mur ne doit pas être parfaitement vertical. Il doit s’incliner légèrement vers l’intérieur (entre 10% et 15%). Cela déplace le centre de gravité vers le cœur de la structure." },
+                        { image: "img/pierre/schema_03.webp", caption: "Les boutisses : Ce sont des pierres longues posées dans le sens de l’épaisseur du mur. Elles traversent le mur de part en part pour lier le parement extérieur et intérieur. Ce sont les «clous» de la structure." },
+                        { image: "img/pierre/schema_04.webp", caption: "Le calage et le remplissage : On remplit l’intérieur du mur avec de la petite caillasse (le «tout-venant»). Attention : ces petits cailloux ne sont pas jetés au hasard, ils sont bloqués fermement pour empêcher les grosses pierres de bouger" }
                     ],
                     // 2 cadres par ligne (2x2) pour les 4 planches du process,
                     // comme sur la page d'analyse du pavillon de tennis.
                     processColumns: 2,
                     technical: [
-                        { image: "img/pierre/plans_coupes.jpg", caption: "Plan et coupes" },
-                        { image: "img/pierre/analyse.jpg", caption: "Etude" }
+                        { image: "img/pierre/plans_coupes.webp", caption: "Plan et coupes" },
+                        { image: "img/pierre/analyse.webp", caption: "Etude" }
                     ],
-                    tectonic: "img/pierre/axo.jpg"
+                    tectonic: "img/pierre/axo.webp"
                 }
             }
         ]

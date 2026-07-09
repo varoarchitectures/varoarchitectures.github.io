@@ -11,7 +11,7 @@ body {
 
 /* L'image de fond avec un overlay sombre pour la lisibilité */
 .bg-image {
-    background-image: url('../img/accueil.png');
+    background-image: url('../img/accueil.webp');
     background-size: cover;
     background-position: center;
 }
