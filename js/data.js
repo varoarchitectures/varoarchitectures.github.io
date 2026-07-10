@@ -342,9 +342,9 @@ window.SITE_DATA = {
                     hero: "img/metal/affiche.webp",
                     technical: [
                         { image: "img/metal/plan.webp", caption: "Plan" },
-                        { image: "img/metal/plan.webp", caption: "Coupe" }
+                        { image: "img/metal/coupe.webp", caption: "Coupe" }
                     ],
-                    tectonic: ["img/metal/boule.webp", "img/metal/coupé.webp"]
+                    tectonic: ["img/metal/boule.webp", "img/metal/pillier.webp"]
                 }
             },
             {
@@ -356,7 +356,7 @@ window.SITE_DATA = {
                 detail: {
                     year: "2025",
                     semester: "L2 — S4",
-                    teacher: "À définir",
+                    teacher: "Rémi COLLET",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: "Ici, l'équilibre ne vient pas de la légèreté mais du poids : la masse de pierre travaille contre la gravité plutôt qu'avec elle.",
                     hero: "img/pierre/maquette.webp",
