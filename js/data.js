@@ -39,8 +39,8 @@ window.SITE_DATA = {
             period: "Intersemestre 2025-26",
             title: "Construction en terre crue",
             subtitle: "ENSASE • Saint-Étienne",
-            description: "Découverte et expérimentations de différentes techniques de la construction en terre avec 2 architectes/maçons spécialistes : bauge, pisé, adobe, torchis.",
-            detail: "Application directe pour l'isolation en terre allégée et en terre paille d'un mur.",
+            description: "Découverte et expérimentations de différentes techniques de la construction en terre avec 2 architectes/maçons spécialistes",
+            detail: "Bauge, pisé, torchis, adobe, isolation en terre paille et en terre-allégée.",
             images: [
                 "img/terre/bauge.webp",
                 "img/terre/adobe.webp",
@@ -58,16 +58,16 @@ window.SITE_DATA = {
             period: "2025-26",
             title: "Président de l'Association Imhotep",
             subtitle: "ENSASE • Saint-Étienne",
-            description: "Recherche de subventions et organisation d'événements.",
-            detail: "Paniers de fruits et légumes, partenariat avec De la ferme au quartier et Vrac en vert.",
+            description: "Distribution dde denrées alimentaires et produits hygiéniques, organisation de divers projets. En partenariat avec l'ENSASE et des entreprises locales",
+            detail: "Distribution de produits alimentaires et d'hygiène, friperie autonome, repas.",
             images: []
         },
         {
             id: "taille-pierre",
             period: "07/2025",
-            title: "Chantier de Taille de Pierre",
+            title: "Chantier de Taille de Pierre et Maçonnerie",
             subtitle: "Porterie de l'Abbaye de Morimont • Rempart",
-            description: "Apprentissage et pratique des techniques de construction traditionnelles.",
+            description: "Apprentissage et pratique des techniques de construction traditionnelles en pierre.",
             detail: "Fabrication de mortier, montage de murs, terrassement, taille de pierre.",
             images: [
                 "img/morimond/taille.webp",
@@ -82,10 +82,10 @@ window.SITE_DATA = {
         {
             id: "voyage-philippines",
             period: "07/2024",
-            title: "Voyage Humanitaire — Scouts",
-            subtitle: "Philippines (Projet Scout de 10 ans)",
-            description: "Recherche de partenaires et de financements, planification du projet. Apprentissage et pratique de l'agriculture biologique.",
-            detail: "Vinaigre de bois, greffe, engrais, marcottage, plantation de divers fruits et légumes.",
+            title: "Voyage Humanitaire — Scouts et Guides de France",
+            subtitle: "Philippines (Projet Scout depuis 10 ans)",
+            description: "Travail dans une ferme biologique en partageant la vie locale",
+            detail: "Recherche de partenaires et de financements, planification du projet, vinaigre de bois, greffe, engrais, marcottage, plantation de divers fruits et légumes.",
             images: [
                 "img/philippines/class.webp",
                 "img/philippines/riz.webp",
@@ -102,8 +102,8 @@ window.SITE_DATA = {
             period: "05/2023",
             title: "Stage en Agence d'Architecture",
             subtitle: "83 Arquitectos • Madrid",
-            description: "Découverte du métier d'architecte en agence — différents types de projets (neuf et rénovation), fonctionnement d'une agence, et différentes méthodes de travail et de réflexion.",
-            detail: "",
+            description: "Découverte du métier d'architecte en agence et des différents projets : Maison individuelle, restauration de façade, restaurant.",
+            detail: "Recherche de reférences, reflexion du projet par la maquette",
             images: []
         },
         {
