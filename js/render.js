@@ -91,6 +91,10 @@
                     <h2 class="text-4xl md:text-5xl font-light tracking-widest uppercase mb-2">${escapeHtml(p.name)}</h2>
                     <p class="text-gray-500 uppercase tracking-widest text-sm mb-6">${escapeHtml(p.role)}</p>
                     <p class="font-light leading-relaxed text-gray-800">${escapeHtml(p.bio)}</p>
+                    <a href="cv/Pablo-Varo-CV.pdf" download
+                       class="block mt-6 text-sm uppercase tracking-widest font-medium underline underline-offset-4 hover:text-gray-400 transition-colors">
+                        Télécharger le CV (PDF)
+                    </a>
                 </div>
 
                 <div class="w-full h-px bg-black/20"></div>
