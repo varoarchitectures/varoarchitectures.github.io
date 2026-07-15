@@ -11,7 +11,7 @@ window.SITE_DATA = {
         role: "Étudiant en Architecture",
         bio: "Engagé, sérieux, sociable et conscient du travail à accomplir. Je travaille en toute autonomie et je me donne à fond.",
         contact: {
-            address: "5 place Jean Ploton, St Etienne, France",
+            address: "5 place Jean Pltoton, St Etienne, France",
             // Email et téléphone stockés sous forme de codes de caractères plutôt
             // qu'en texte brut : ça évite qu'un robot spammeur les moissonne en
             // scannant simplement ce fichier, sans rien changer pour un recruteur
