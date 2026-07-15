@@ -58,7 +58,7 @@ window.SITE_DATA = {
             period: "2025-26",
             title: "Président de l'Association Imhotep",
             subtitle: "ENSASE • Saint-Étienne",
-            description: "Distribution dde denrées alimentaires et produits hygiéniques, organisation de divers projets. En partenariat avec l'ENSASE et des entreprises locales",
+            description: "Distribution de denrées alimentaires et produits hygiéniques, organisation de divers projets. En partenariat avec l'ENSASE et des entreprises locales.",
             detail: "Distribution de produits alimentaires et d'hygiène, friperie autonome, repas.",
             images: []
         },
@@ -84,7 +84,7 @@ window.SITE_DATA = {
             period: "07/2024",
             title: "Voyage Humanitaire — Scouts et Guides de France",
             subtitle: "Philippines (Projet Scout depuis 10 ans)",
-            description: "Travail dans une ferme biologique en partageant la vie locale",
+            description: "Travail dans une ferme biologique en partageant la vie locale.",
             detail: "Recherche de partenaires et de financements, planification du projet, vinaigre de bois, greffe, engrais, marcottage, plantation de divers fruits et légumes.",
             images: [
                 "img/philippines/class.webp",
