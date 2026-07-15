@@ -27,6 +27,17 @@
             .replace(/>/g, "&gt;");
     }
 
+    // Transforme un champ "detail" (ex. "Vinaigre de bois, greffe, engrais.")
+    // en compétences séparées par des points médians : "Vinaigre de bois · greffe · engrais"
+    function formatSkills(text) {
+        if (typeof text !== "string" || !text.trim()) return "";
+        return text
+            .split(",")
+            .map((part) => part.trim().replace(/\.\s*$/, ""))
+            .filter(Boolean)
+            .join(" · ");
+    }
+
     // Décode un champ de contact obfusqué (tableau de codes de caractères, voir
     // js/data.js). But : éviter que l'email/téléphone traînent en clair dans le
     // HTML/JS statique, moissonnable par un simple robot spammeur, tout en
@@ -136,23 +147,31 @@
             container.innerHTML = list
                 .map((exp, i) => {
                     const isLast = i === list.length - 1;
-                    const detailHtml = exp.detail
-                        ? '<br><span class="text-black">→</span> ' + escapeHtml(exp.detail)
+
+                    // Transforme "Vinaigre de bois, greffe, engrais." en tags
+                    // séparés par des points médians : "Vinaigre de bois · greffe · engrais"
+                    const skillsHtml = exp.detail
+                        ? `<p class="mt-3 text-sm text-gray-400 tracking-wide leading-relaxed">
+                               ${escapeHtml(formatSkills(exp.detail))}
+                           </p>`
                         : "";
 
                     const hasImages = Array.isArray(exp.images) && exp.images.length > 0;
 
+                    // Titre : sur les titres longs qui passent sur 2 lignes, on utilise un
+                    // fondu (crossfade) plutôt qu'un slide vertical à hauteur fixe, pour ne
+                    // jamais couper le texte avec un overflow-hidden trop court.
                     const titleHtml = hasImages
                         ? `<button type="button" data-gallery-id="${escapeHtml(exp.id)}"
-                               class="gallery-trigger group relative block text-left mb-2 h-8 md:h-9 overflow-hidden cursor-pointer">
-                               <span class="block text-xl md:text-2xl font-medium uppercase tracking-wider transition-all duration-300 ease-out group-hover:-translate-y-8 group-hover:opacity-0">
+                               class="gallery-trigger relative block text-left mb-2 cursor-pointer">
+                               <span class="block text-xl md:text-2xl font-medium uppercase tracking-wider leading-tight transition-opacity duration-300 group-hover:opacity-0">
                                    ${escapeHtml(exp.title)}
                                </span>
-                               <span class="absolute inset-0 flex items-center text-xl md:text-2xl font-medium uppercase tracking-wider text-gray-400 translate-y-8 opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100">
+                               <span class="absolute inset-0 flex items-center text-xl md:text-2xl font-medium uppercase tracking-wider leading-tight text-gray-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                                    Voir la Galerie
                                </span>
                            </button>`
-                        : `<h3 class="text-xl md:text-2xl font-medium uppercase tracking-wider mb-2">${escapeHtml(exp.title)}</h3>`;
+                        : `<h3 class="text-xl md:text-2xl font-medium uppercase tracking-wider leading-tight mb-2">${escapeHtml(exp.title)}</h3>`;
 
                     return `
                         <div class="border-t border-black py-10 grid grid-cols-1 md:grid-cols-4 gap-6 group${isLast ? " border-b" : ""}">
@@ -163,8 +182,9 @@
                                 ${titleHtml}
                                 <p class="text-sm uppercase tracking-widest text-gray-500 mb-4">${escapeHtml(exp.subtitle)}</p>
                                 <p class="text-gray-600 font-light leading-relaxed">
-                                    ${escapeHtml(exp.description)}${detailHtml}
+                                    ${escapeHtml(exp.description)}
                                 </p>
+                                ${skillsHtml}
                             </div>
                         </div>
                     `;
