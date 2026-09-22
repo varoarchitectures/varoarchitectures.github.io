@@ -8,22 +8,49 @@
     <!-- SEO : résumé affiché dans les résultats Google -->
     <meta name="description" content="Portfolio de Pablo Varo, étudiant en architecture à l'ENSASE Saint-Étienne — projets de conception, analyses d'architecture et workshops.">
 
+    <!-- URL canonique : évite les problèmes de contenu dupliqué pour Google -->
+    <link rel="canonical" href="https://varoarchitectures.github.io/">
+
     <!-- Partage sur réseaux sociaux (LinkedIn, Facebook...) -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Portfolio - Pablo Varo">
     <meta property="og:description" content="Étudiant en architecture à l'ENSASE Saint-Étienne — projets de conception, analyses d'architecture et workshops.">
-    <meta property="og:image" content="img/accueil.webp">
-    <!-- ⚠️ Une fois le site en ligne, remplace par l'URL complète, ex. https://tonsite.fr -->
+    <!-- URL absolue obligatoire : Facebook/LinkedIn ne résolvent pas les chemins relatifs -->
+    <meta property="og:image" content="https://varoarchitectures.github.io/img/accueil.webp">
     <meta property="og:url" content="https://varoarchitectures.github.io/">
+    <meta property="og:locale" content="fr_FR">
 
     <!-- Partage sur X / Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Portfolio - Pablo Varo">
     <meta name="twitter:description" content="Étudiant en architecture à l'ENSASE Saint-Étienne — projets de conception, analyses d'architecture et workshops.">
-    <meta name="twitter:image" content="img/accueil.webp">
+    <meta name="twitter:image" content="https://varoarchitectures.github.io/img/accueil.webp">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+
+    <!-- Données structurées (schema.org) : aide Google à comprendre qui tu es
+         et à afficher un résultat enrichi dans les résultats de recherche. -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Pablo Varo",
+        "jobTitle": "Étudiant en Architecture",
+        "url": "https://varoarchitectures.github.io/",
+        "image": "https://varoarchitectures.github.io/img/accueil.webp",
+        "affiliation": {
+            "@type": "CollegeOrUniversity",
+            "name": "ENSASE — École nationale supérieure d'architecture de Saint-Étienne",
+            "url": "https://www.st-etienne.archi.fr/"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Saint-Étienne",
+            "addressCountry": "FR"
+        }
+    }
+    </script>
 
     <!-- Tailwind CSS (compilé localement, voir README > "Style / Tailwind") -->
     <link href="css/tailwind.css" rel="stylesheet">
