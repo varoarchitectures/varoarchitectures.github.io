@@ -215,6 +215,9 @@ function renderGalleryImage() {
 
         if (caption) caption.textContent = current.caption || galleryState.title;
         if (counter) counter.textContent = (galleryState.index + 1) + " / " + total;
+        // alt réel (et non vide) : sans ça, un lecteur d'écran n'a aucune
+        // information sur l'image affichée dans la visionneuse.
+        img.alt = current.caption || galleryState.title || "Image de la galerie";
 
         if (pdfLink) {
             if (current.pdf) {
@@ -227,6 +230,40 @@ function renderGalleryImage() {
         }
     } catch (err) {
         console.error("[app] Erreur lors de l'affichage de l'image de la galerie :", err);
+    }
+}
+
+/* Focus clavier de la modale galerie :
+   - lastFocusedElement : mémorise l'élément qui avait le focus avant l'ouverture
+     (le lien/bouton cliqué), pour lui rendre le focus à la fermeture.
+   - getGalleryFocusable : liste les éléments interactifs actuellement visibles
+     dans la modale (le bouton précédent/suivant est masqué si une seule image).
+   - trapGalleryFocus : empêche Tab/Shift+Tab de sortir de la modale tant qu'elle
+     est ouverte, comme l'exige le pattern ARIA "dialog". */
+let lastFocusedElement = null;
+
+function getGalleryFocusable() {
+    const modal = getEl("gallery-modal");
+    if (!modal) return [];
+    return Array.from(modal.querySelectorAll("a[href], button")).filter(
+        (el) => el.offsetParent !== null
+    );
+}
+
+function trapGalleryFocus(e) {
+    if (e.key !== "Tab") return;
+    const focusable = getGalleryFocusable();
+    if (focusable.length === 0) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
     }
 }
 
@@ -247,8 +284,17 @@ function showGalleryModal(items, title, startIndex) {
 
     modal.classList.remove("hidden");
     modal.classList.add("flex");
+    modal.setAttribute("aria-hidden", "false");
     modal.scrollTop = 0;
     document.body.style.overflow = "hidden";
+
+    // Mémorise l'élément d'origine puis déplace le focus dans la modale
+    // (bouton fermer) : indispensable pour les utilisateurs au clavier et
+    // lecteur d'écran, sinon le focus reste "perdu" derrière la modale.
+    lastFocusedElement = document.activeElement;
+    const closeBtn = getEl("gallery-close-btn");
+    if (closeBtn) closeBtn.focus();
+    document.addEventListener("keydown", trapGalleryFocus);
 }
 
 window.openGallery = function (experienceId) {
@@ -287,7 +333,16 @@ window.closeGallery = function () {
 
         modal.classList.add("hidden");
         modal.classList.remove("flex");
+        modal.setAttribute("aria-hidden", "true");
         document.body.style.overflow = "auto";
+        document.removeEventListener("keydown", trapGalleryFocus);
+
+        // Rend le focus à l'élément qui avait ouvert la galerie (lien/bouton
+        // de la page), plutôt que de le laisser sur <body>.
+        if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+            lastFocusedElement.focus();
+        }
+        lastFocusedElement = null;
     } catch (err) {
         console.error("[app] Erreur dans closeGallery :", err);
     }

@@ -155,7 +155,7 @@
                     // Transforme "Vinaigre de bois, greffe, engrais." en tags
                     // séparés par des points médians : "Vinaigre de bois · greffe · engrais"
                     const skillsHtml = exp.detail
-                        ? `<p class="mt-3 text-sm text-gray-400 tracking-wide leading-relaxed">
+                        ? `<p class="mt-3 text-sm text-gray-500 tracking-wide leading-relaxed">
                                ${escapeHtml(formatSkills(exp.detail))}
                            </p>`
                         : "";
@@ -171,7 +171,7 @@
                                <span class="block text-xl md:text-2xl font-medium uppercase tracking-wider leading-tight transition-opacity duration-300 group-hover:opacity-0">
                                    ${escapeHtml(exp.title)}
                                </span>
-                               <span class="absolute inset-0 flex items-center text-xl md:text-2xl font-medium uppercase tracking-wider leading-tight text-gray-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                               <span class="absolute inset-0 flex items-center text-xl md:text-2xl font-medium uppercase tracking-wider leading-tight text-gray-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                                    Voir la Galerie
                                </span>
                            </button>`
@@ -179,7 +179,7 @@
 
                     return `
                         <div class="border-t border-black py-10 grid grid-cols-1 md:grid-cols-4 gap-6 group${isLast ? " border-b" : ""}">
-                            <div class="md:col-span-1 text-2xl font-light tracking-wide text-gray-400 group-hover:text-black transition-colors">
+                            <div class="md:col-span-1 text-2xl font-light tracking-wide text-gray-500 group-hover:text-black transition-colors">
                                 ${escapeHtml(exp.period)}
                             </div>
                             <div class="md:col-span-3">
@@ -235,7 +235,7 @@
                             </div>
                             <div class="pt-4 flex items-start justify-between gap-4">
                                 <h3 class="text-base md:text-lg font-medium uppercase tracking-wider">${escapeHtml(proj.title)}</h3>
-                                <span class="text-xs uppercase tracking-widest text-gray-400 whitespace-nowrap">${escapeHtml(proj.meta)}</span>
+                                <span class="text-xs uppercase tracking-widest text-gray-500 whitespace-nowrap">${escapeHtml(proj.meta)}</span>
                             </div>
                         </a>
                     `
@@ -310,7 +310,7 @@
                     .filter(([, value]) => !!value)
                     .map(
                         ([label, value]) =>
-                            '<div class="text-gray-400">' + escapeHtml(label) + "</div>" +
+                            '<div class="text-gray-500">' + escapeHtml(label) + "</div>" +
                             '<div class="text-black font-medium">' + escapeHtml(value) + "</div>"
                     )
                     .join("");
@@ -376,7 +376,7 @@
                                     <div class="w-full max-w-[220px] aspect-square bg-gray-50 overflow-hidden">
                                         <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.caption || "")}" loading="lazy" decoding="async" class="w-full h-full object-cover" data-fallback="true">
                                     </div>
-                                    ${item.caption ? '<figcaption class="mt-4 text-xs uppercase tracking-[0.15em] text-gray-400">' + escapeHtml(item.caption) + "</figcaption>" : ""}
+                                    ${item.caption ? '<figcaption class="mt-4 text-xs uppercase tracking-[0.15em] text-gray-500">' + escapeHtml(item.caption) + "</figcaption>" : ""}
                                 </figure>
                             `
                         )
@@ -433,7 +433,7 @@
                                                 <span class="absolute inset-0 bg-black/0 group-hover/doc:bg-black/5 transition-colors duration-300 pointer-events-none"></span>
                                                 <span class="absolute bottom-3 right-3 text-[10px] uppercase tracking-[0.15em] bg-white/90 px-2 py-1 opacity-0 group-hover/doc:opacity-100 transition-opacity duration-300">Agrandir</span>
                                             </button>
-                                            ${item.caption ? '<figcaption class="mt-6 text-xs uppercase tracking-[0.15em] text-gray-400 text-center">' + escapeHtml(item.caption) + "</figcaption>" : ""}
+                                            ${item.caption ? '<figcaption class="mt-6 text-xs uppercase tracking-[0.15em] text-gray-500 text-center">' + escapeHtml(item.caption) + "</figcaption>" : ""}
                                         </figure>
                                     `
                                 )
