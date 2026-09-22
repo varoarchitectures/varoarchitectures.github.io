@@ -26,7 +26,7 @@ window.SITE_DATA = {
             { year: "2024", label: "1ère année de Licence Histoire de l'Art & Archéologie, Lyon 2" },
             { year: "2023", label: "Baccalauréat — Spécialités Maths, Physique-Chimie, SVT" }
         ],
-        software: ["AutoCAD", "Rhinoceros", "Impression 3D", "Découpe Laser"],
+        software: ["AutoCAD", "Rhino", "Impression 3D", "Découpe Laser"],
         languages: ["Anglais (Courant)", "Espagnol (Bilingue)"]
     },
 
@@ -161,7 +161,7 @@ window.SITE_DATA = {
                     semester: "L1 — S2",
                     teacher: "Sebastien MARTINEZ-BARAT",
                     location: "ENSASE, Saint-Étienne",
-                    manifesto: "“Less in enought”, Pier Vittorio Aureli",
+                    manifesto: "“Less in enough”, Pier Vittorio Aureli",
                     hero: "img/coloc/detail.webp",
                     technical: [
                         { image: "img/coloc/plan.webp", caption: "Plan" },
