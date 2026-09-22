@@ -54,8 +54,19 @@
 
     <!-- Tailwind CSS (compilé localement, voir README > "Style / Tailwind") -->
     <link href="css/tailwind.css" rel="stylesheet">
+
+    <!-- Préconnexion : établit la connexion vers Google Fonts avant même de lire
+         la balise <link> plus bas, ce qui accélère le chargement de la police Jost. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Police géométrique et sobre -->
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Préchargement de l'image de fond de la landing page : elle est visible
+         immédiatement mais chargée via CSS (.bg-image), donc le navigateur ne
+         la découvrirait normalement qu'après avoir lu et appliqué le CSS. -->
+    <link rel="preload" as="image" href="img/accueil.webp" fetchpriority="high">
+
     <!-- Styles propres au site -->
     <link rel="stylesheet" href="css/style.css">
 </head>
