@@ -9,7 +9,7 @@ window.SITE_DATA = {
     profile: {
         name: "Pablo Varo",
         role: "Étudiant en Architecture",
-        bio: "Engagé, sérieux, sociable et conscient du travail à accomplir. Je travaille en toute autonomie et je me donne à fond.",
+        bio: "Étudiant en architecture à l’ENSASE, je m'appuie sur la rigueur du sol, la sensibilité du déjà là avec la maîtrise des outils contemporains de conception. J’explore le passage de l'analyse territoriale au détail constructif, avec une attention particulière portée à la simplicité, des choses, sans superflu. Ce qui est paradoxalement difficile à faire parfois. Mais aussi à la modularité des choses et des espaces.",
         contact: {
             address: "5 place Jean Plotton, St Etienne, France",
             // Email et téléphone stockés sous forme de codes de caractères plutôt
@@ -26,8 +26,8 @@ window.SITE_DATA = {
             { year: "2024", label: "1ère année de Licence Histoire de l'Art & Archéologie, Lyon 2" },
             { year: "2023", label: "Baccalauréat — Spécialités Maths, Physique-Chimie, SVT" }
         ],
-        software: ["AutoCAD", "Rhino", "Impression 3D", "Découpe Laser"],
-        languages: ["Anglais (Courant)", "Espagnol (Bilingue)"]
+        software: ["AutoCAD", "Rhino", "Impression 3D", "Découpe Laser", "QGIS"],
+        languages: ["Anglais (Courant)", "Espagnol (Bilingue)", "Français (Bilingue)"]
     },
 
     // Expériences (chronologie sur la page EXPÉRIENCES, du plus récent au plus ancien).
