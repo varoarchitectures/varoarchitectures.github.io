@@ -175,7 +175,7 @@ window.SITE_DATA = {
                     description: {
                         fr: [
                             "Inspiré par le manifeste « Less is Enough » de Pier Vittorio Aureli, le projet explore l'économie de moyens comme vecteur d'espaces. Le parpaing brut, laissé apparent, s'affirme comme un choix de simplicité : standard et économique.",
-                            "Le plan s'étire en une ligne unitaire et compacte. La distribution s'opère par une coursive bioclimatique en polycarbonate le long de la façade : espace tampon captant les apports solaires en hiver, elle s'ouvre intégralement pour transformer le couloir en terrasse aux beaux jours, hybridant les limites entre intérieur et grand paysage."
+                            "Le plan s'étire en une ligne. La distribution s'opère par une coursive bioclimatique en polycarbonate le long de la façade : espace tampon captant les apports solaires en hiver, elle s'ouvre intégralement pour transformer le couloir en terrasse aux beaux jours, hybridant les limites entre intérieur et grand paysage."
                         ],
                         en: [
                             "Inspired by Pier Vittorio Aureli's manifesto “Less is Enough”, the project explores economy of means as a generator of space. Raw concrete block, left exposed, asserts itself as a choice of simplicity: standard and economical.",
