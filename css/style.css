@@ -125,13 +125,6 @@ button:focus-visible {
     }
 }
 
-/* Sommaire de la page projet : le titre de chaque section s'arrête sous la
-   barre de retour collante au lieu de passer dessous. */
-#detail-process-section,
-#detail-technical-section,
-#detail-tectonic-section {
-    scroll-margin-top: 4.5rem;
-}
 
 /* --------------------------------------------------------------------------
    Sélecteur de langue FR / EN (voir js/i18n.js)

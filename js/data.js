@@ -11,9 +11,10 @@ window.SITE_DATA = {
     // Profil / CV (colonne de gauche de la page EXPÉRIENCES)
     profile: {
         name: "Pablo Varo",
-        // CV par langue. Quand tu auras une version anglaise, dépose-la dans cv/ et
-        // remplace le chemin "en" (ex. "cv/Pablo-Varo-CV-en.pdf").
-        cv: { fr: "cv/Pablo-Varo-CV.pdf", en: "cv/Pablo-Varo-CV.pdf" },
+        // CV par langue : le fichier "en" est téléchargé depuis la version anglaise du site.
+        // ⚠️ Le contenu actuel de cv/Pablo-Varo-CV.pdf est en anglais : remplace ce fichier par
+        // ton CV en français (même nom) pour que la version française serve bien un CV français.
+        cv: { fr: "cv/Pablo-Varo-CV.pdf", en: "cv/Pablo-Varo-CV-en.pdf" },
         role: { fr: "Étudiant en Architecture", en: "Architecture student" },
         bio: { fr: "Étudiant en architecture à l’ENSASE, je m'appuie sur la rigueur du sol, la sensibilité du déjà là avec la maîtrise des outils contemporains de conception. J’explore le passage de l'analyse territoriale au détail constructif, avec une attention particulière portée à la simplicité, des choses, sans superflu. Ce qui est paradoxalement difficile à faire parfois. Mais aussi à la modularité des choses et des espaces.", en: "Architecture student at ENSASE, I build on the rigour of the ground and the sensitivity of what is already there, combined with command of contemporary design tools. I explore the passage from territorial analysis to constructional detail, with particular attention to simplicity, to things without superfluity — which is, paradoxically, sometimes hard to achieve — and to the modularity of objects and spaces." },
         contact: {

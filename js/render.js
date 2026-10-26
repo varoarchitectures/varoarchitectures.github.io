@@ -518,60 +518,11 @@
                 }
             }
 
-            // Numérotation et sommaire des sections réellement présentes : un projet
-            // sans processus affiche "01 — Dessins, 02 — Détail", pas de trou, et le
-            // sommaire du cartouche ne propose que ce qui existe sur la page.
-            const sectionDefs = [
-                {
-                    section: processSection,
-                    titleEl: document.getElementById("detail-process-title"),
-                    label: ui("sectionProcess"),
-                    present: Array.isArray(d.process) && d.process.length > 0
-                },
-                {
-                    section: technicalSection,
-                    titleEl: document.getElementById("detail-technical-title"),
-                    label: ui("sectionDrawings"),
-                    present: Array.isArray(d.technical) && d.technical.length > 0
-                },
-                {
-                    section: tectonicSection,
-                    titleEl: tectonicTitleEl,
-                    label: t(d.tectonicTitle) || ui("sectionDetail"),
-                    present: tectonicDocs.length > 0
-                }
-            ].filter((def) => def.present && def.section && def.titleEl);
-
-            sectionDefs.forEach((def, i) => {
-                def.number = String(i + 1).padStart(2, "0");
-                def.titleEl.textContent = def.number + " \u2014 " + def.label;
-            });
-
-            const sectionsNav = document.getElementById("detail-sections-nav");
-            if (sectionsNav) {
-                if (sectionDefs.length < 2) {
-                    sectionsNav.innerHTML = "";
-                    sectionsNav.classList.add("hidden");
-                    sectionsNav.classList.remove("flex");
-                } else {
-                    sectionsNav.innerHTML = sectionDefs
-                        .map(
-                            (def, i) =>
-                                '<button type="button" data-section-index="' + i + '" class="text-gray-500 hover:text-black transition-colors appearance-none bg-transparent border-0 p-0 cursor-pointer uppercase tracking-[0.15em]">' +
-                                '<span class="text-gray-400 mr-2">' + def.number + "</span>" + escapeHtml(def.label) +
-                                "</button>"
-                        )
-                        .join("");
-                    sectionsNav.classList.remove("hidden");
-                    sectionsNav.classList.add("flex");
-                    sectionsNav.querySelectorAll("button").forEach((btn) => {
-                        btn.addEventListener("click", function () {
-                            const def = sectionDefs[parseInt(btn.getAttribute("data-section-index"), 10)];
-                            if (def && def.section) def.section.scrollIntoView({ behavior: "smooth", block: "start" });
-                        });
-                    });
-                }
-            }
+            // Titres des sections (traduits selon la langue).
+            const processTitleEl = document.getElementById("detail-process-title");
+            if (processTitleEl) processTitleEl.textContent = ui("sectionProcess");
+            const technicalTitleEl = document.getElementById("detail-technical-title");
+            if (technicalTitleEl) technicalTitleEl.textContent = ui("sectionDrawings");
 
             const prevProj = all[(idx - 1 + all.length) % all.length];
             const nextProj = all[(idx + 1) % all.length];
