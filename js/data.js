@@ -172,7 +172,16 @@ window.SITE_DATA = {
                     teacher: "Sébastien MARTINEZ-BARAT",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: "“Less is enough”, Pier Vittorio Aureli",
-                    description: { fr: "", en: "" },
+                    description: {
+                        fr: [
+                            "Intention & référence : Inspiré par le manifeste « Less is Enough » de Pier Vittorio Aureli, le projet explore l'économie de moyens comme vecteur de spatialité. Le parpaing brut, laissé apparent, s'affirme comme un choix tectonique délibéré : standard, économique et thermique.",
+                            "Dispositif spatial : Le plan s'étire en une ligne unitaire et compacte. La distribution s'opère par une coursive bioclimatique en polycarbonate le long de la façade : espace tampon captant les apports solaires en hiver, elle coulisse intégralement pour transformer le couloir en terrasse filante aux beaux jours, hybridant les limites entre intérieur et grand paysage."
+                        ],
+                        en: [
+                            "Intention & reference: Inspired by Pier Vittorio Aureli's manifesto “Less is Enough”, the project explores economy of means as a vector of spatiality. Raw concrete block, left exposed, asserts itself as a deliberate tectonic choice: standard, economical and thermal.",
+                            "Spatial layout: The plan stretches into a single, compact line. Circulation runs along a bioclimatic polycarbonate gallery on the façade: a buffer space that captures solar gains in winter, it slides open entirely to turn the corridor into a continuous terrace in fine weather, blurring the boundary between interior and the wider landscape."
+                        ]
+                    },
                     hero: "img/coloc/detail.webp",
                     technical: [
                         { image: "img/coloc/plan.webp", caption: "Plan" },
@@ -194,7 +203,16 @@ window.SITE_DATA = {
                     teacher: "Jérôme GLAIROUX",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: { fr: "la conservation de l'existant. En le dupliquant, l'extension s'élance dans le parc pour s'y ancrer.", en: "preserving the existing. By duplicating it, the extension reaches out into the park to anchor itself there." },
-                    description: { fr: "", en: "" },
+                    description: {
+                        fr: [
+                            "Implantation : Inscrit au cœur de la topographie arborée du parc Félix Thiollier, le projet refuse le geste autoritaire en instaurant un dialogue morphologique avec l'existant.",
+                            "Volumétrie & lumière : La partition repose sur la duplication formelle du bâti d'origine, appliquée avec un léger glissement d'axe qui libère des perspectives diagonales vers le parc. Au centre, une large circulation commune sous verrière capte la lumière zénithale, transformant le simple couloir de distribution en un tiers-lieu lumineux dédié aux interactions pédagogiques."
+                        ],
+                        en: [
+                            "Siting: Set within the wooded topography of the Parc Félix Thiollier, the project rejects the authoritarian gesture and instead establishes a morphological dialogue with the existing building.",
+                            "Volume & light: The layout rests on the formal duplication of the original building, applied with a slight axial shift that opens diagonal views towards the park. At the centre, a wide shared circulation space under a glass roof draws in zenithal light, turning a plain distribution corridor into a luminous third place devoted to pedagogical interaction."
+                        ]
+                    },
                     hero: "img/ecole/maquette.webp",
                     process: [
                         { image: "img/ecole/dedoublement.webp", caption: { fr: "Intention initiale", en: "Initial intention" } },
@@ -221,7 +239,16 @@ window.SITE_DATA = {
                     teacher: "Séverin PERREAULT",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: { fr: "Rester dans le village, c'est poursuivre le chemin de ronde et y fixer le projet. Enterrer et poser.", en: "To stay within the village is to continue the wall walk and fix the project to it. Bury and place." },
-                    description: { fr: "", en: "" },
+                    description: {
+                        fr: [
+                            "Topographie & matière : Implantée en lisière du parking du cimetière de Saint-Victor-sur-Loire, la salle polyvalente s'encastre dans le talus pour limiter son impact visuel. Ses parois extérieures en moellons bruts prolongent directement la stratigraphie des murs de soutènement du bourg médiéval et du château.",
+                            "Double temporalité : Le toit-terrasse accueille un pavillon ouvert, léger et traversant. Au quotidien, il sert d'abri et de belvédère pour les randonneurs ; lors des fêtes de village, il se transforme en café associatif et place couverte, articulant usages du quotidien et rassemblements collectifs."
+                        ],
+                        en: [
+                            "Topography & material: Located at the edge of the cemetery car park in Saint-Victor-sur-Loire, the multipurpose hall is embedded in the embankment to limit its visual impact. Its exterior walls of rough rubble stone directly extend the stratigraphy of the retaining walls of the medieval village and castle.",
+                            "Dual temporality: The roof terrace hosts an open, light, pass-through pavilion. Day to day, it serves as a shelter and viewpoint for hikers; during village festivals, it becomes a community café and covered square, linking everyday uses with collective gatherings."
+                        ]
+                    },
                     hero: "img/cafe/maquette.webp",
                     process: [
                         { image: "img/cafe/installer.webp", caption: { fr: "Installer", en: "Install" } },
@@ -254,7 +281,16 @@ window.SITE_DATA = {
                     teacher: "Jérôme GLAIROUX",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: { fr: "construire un bâtiment, pour façonner une place, pour façonner une ville.", en: "building a building to shape a square, to shape a city." },
-                    description: { fr: "", en: "" },
+                    description: {
+                        fr: [
+                            "Enjeu : Étude anatomique de l'un des premiers manifestes de la Renaissance florentine.",
+                            "Contenu graphique : Décomposition de la travée modulaire carrée et de la perspective linéaire. L'analyse met en lumière la rigueur proportionnelle du portique urbain (hauteur de colonne égale à l'entrecolonne et à la profondeur de la nef), opérant comme un seuil public d'une parfaite clarté géométrique entre la ville et l'institution."
+                        ],
+                        en: [
+                            "Stakes: An anatomical study of one of the first manifestos of the Florentine Renaissance.",
+                            "Graphic content: Breakdown of the square modular bay and of linear perspective. The analysis highlights the proportional rigour of the urban portico (column height equal to the intercolumniation and to the depth of the nave), acting as a public threshold of perfect geometric clarity between the city and the institution."
+                        ]
+                    },
                     hero: "img/ospedale/maquette.webp",
                     process: [
                         { image: "img/ospedale/lien.svg", caption: { fr: "Lien", en: "Link" } },
@@ -281,7 +317,16 @@ window.SITE_DATA = {
                     teacher: "Séverin PERREAULT",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: { fr: "Un pavillon, comme moyen de voir. un dessous et un dessus, ouvrant sur le paysage, partitionnant la nature.", en: "A pavilion as a way of seeing: a below and an above, opening onto the landscape, partitioning nature." },
-                    description: { fr: "", en: "" },
+                    description: {
+                        fr: [
+                            "Enjeu : Autopsie critique d'une œuvre clé de l'École de Porto, illustrant le dialogue entre modernisme et tradition vernaculaire portugaise.",
+                            "Contenu graphique : Analyse de la séquence d'accès dans le parc, de la tectonique du socle maçonné et de l'assemblage précis de la toiture suspendue en bois. L'accent est mis sur la légèreté de l'édifice, qui s'efface pour sublimer la topographie végétale environnante."
+                        ],
+                        en: [
+                            "Stakes: A critical dissection of a key work of the Porto School, illustrating the dialogue between modernism and Portuguese vernacular tradition.",
+                            "Graphic content: Analysis of the access sequence through the park, of the tectonics of the masonry base and of the precise assembly of the suspended timber roof. The emphasis is on the building's lightness, which fades away to enhance the surrounding planted topography."
+                        ]
+                    },
                     hero: "img/tavora/maquette.webp",
                     process: [
                         { image: "img/tavora/installer.webp", caption: { fr: "Installer", en: "Install" } },
@@ -310,7 +355,16 @@ window.SITE_DATA = {
                     semester: { fr: "L2 — S4", en: "Year 2 — Semester 4" },
                     teacher: "Boris HAMZEIAN",
                     manifesto: { fr: "Une machine à habiter, un environnement artificiel.", en: "A machine for living, an artificial environment." },
-                    description: { fr: "", en: "" },
+                    description: {
+                        fr: [
+                            "Enjeu : Donner corps et cohérence constructive à une utopie industrielle restée à l'état de prototype conceptuel.",
+                            "Contenu graphique : Modélisation et clarification des assemblages constructifs : mât central en aluminium, reprise des charges suspendues par câbles et peau aérodynamique. Le travail a consisté à résoudre les liaisons techniques et les nœuds d'efforts pour rendre cette machine à habiter structurellement plausible et spatialement lisible."
+                        ],
+                        en: [
+                            "Stakes: Giving substance and constructive coherence to an industrial utopia that remained a conceptual prototype.",
+                            "Graphic content: Modelling and clarification of the constructive assemblies: central aluminium mast, suspended loads carried by cables, and aerodynamic skin. The work consisted in resolving the technical connections and force nodes to make this machine for living structurally plausible and spatially legible."
+                        ]
+                    },
                     hero: "img/dymaxion/maquette.webp",
 
                     technical: [
@@ -334,7 +388,16 @@ window.SITE_DATA = {
                     teacher: "Rémi COLLET",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: { fr: "De simples assemblages, pour distribuer des charges et former une structure.", en: "Simple joints, to distribute loads and form a structure." },
-                    description: { fr: "", en: "" },
+                    description: {
+                        fr: [
+                            "Thématique : Grandes portées et tectonique du bois.",
+                            "Restitution : Relevé analytique et dessin technique de la charpente bois monumentale. Décorticage du comportement mécanique sous charges dynamiques, articulation des liaisons assemblages-matière et compréhension des flux d'efforts dans un volume scénique non conventionnel."
+                        ],
+                        en: [
+                            "Theme: Long spans and timber tectonics.",
+                            "Outcome: Analytical survey and technical drawing of the monumental timber frame. Dissection of its mechanical behaviour under dynamic loads, articulation of joint-to-material connections and understanding of force flows in an unconventional performance space."
+                        ]
+                    },
                     hero: "img/bois/maquette.webp",
                     technical: [
                         { image: "img/bois/plan_et_coupe.webp", caption: { fr: "Plan et coupe", en: "Plan and section" } },
@@ -356,7 +419,16 @@ window.SITE_DATA = {
                     teacher: "Rémi COLLET",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: { fr: "Une structure spatiale triangulée en trois dimensions, où chaque rotule fixe participe à la stabilité de l'ensemble.", en: "A triangulated three-dimensional space structure, where each fixed ball joint contributes to the stability of the whole." },
-                    description: { fr: "", en: "" },
+                    description: {
+                        fr: [
+                            "Thématique : Systèmes réticulés et franchissement spatial.",
+                            "Restitution : Relevé géométrique sur site de la nappe métallique complexe couvrant le bassin. Questionnement typologique (vraie ou fausse résille tridimensionnelle), modélisation des nœuds d'articulation et cartographie de la distribution des efforts de traction et de compression au sein des membrures."
+                        ],
+                        en: [
+                            "Theme: Lattice systems and spatial spanning.",
+                            "Outcome: On-site geometric survey of the complex metal grid covering the pool. Typological questioning (true or false three-dimensional lattice), modelling of the articulation nodes and mapping of the distribution of tensile and compressive forces within the members."
+                        ]
+                    },
                     hero: "img/metal/affiche.webp",
                     technical: [
                         { image: "img/metal/plan.webp", caption: "Plan" },
@@ -377,7 +449,16 @@ window.SITE_DATA = {
                     teacher: "Rémi COLLET",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: { fr: "Ici, l'équilibre ne vient pas de la légèreté mais du poids : la masse de pierre travaille contre la gravité plutôt qu'avec elle.", en: "Here, balance comes not from lightness but from weight: the mass of stone works against gravity rather than with it." },
-                    description: { fr: "", en: "" },
+                    description: {
+                        fr: [
+                            "Thématique : Stéréotomie, gravité et inertie.",
+                            "Restitution : Analyse in situ de l'équilibre de l'ouvrage sans liant moderne. Reconstitution du calepinage, modélisation des poussées latérales et décryptage des lignes de frottement qui assurent la pérennité structurelle de ce signal paysager en pierre sèche."
+                        ],
+                        en: [
+                            "Theme: Stereotomy, gravity and inertia.",
+                            "Outcome: On-site analysis of the structure's balance without modern binder. Reconstruction of the stone coursing layout, modelling of lateral thrusts and decoding of the friction lines that ensure the structural durability of this dry-stone landscape landmark."
+                        ]
+                    },
                     hero: "img/pierre/maquette.webp",
                     process: [
                         { image: "img/pierre/schema_01.webp", caption: { fr: "L’assise (la fondation) : On creuse une tranchée pour poser les plus grosses pierres au sol. Elles doivent être enterrées pour éviter que le mur ne glisse.", en: "The foundation course (the base): A trench is dug to lay the largest stones on the ground. They must be buried to stop the wall from sliding." } },
