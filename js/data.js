@@ -320,10 +320,10 @@ window.SITE_DATA = {
                     description: {
                         fr: [
                             "Travail d'étude sur un projet clé de l'École de Porto, illustrant le dialogue entre modernité et tradition vernaculaire portugaise.",
-                            Analyse de la séquence d'accès dans le parc, de la tectonique du socle maçonné et de la toiture suspendue en bois. L'accent est mis sur la légèreté de l'édifice, qui s'efface pour l'observation de la végétation environnante."
+                            "Analyse de la séquence d'accès dans le parc, de la tectonique du socle maçonné et de la toiture suspendue en bois. L'accent est mis sur la légèreté de l'édifice, qui s'efface pour l'observation de la végétation environnante."
                         ],
                         en: [
-                            "Stakes: A study of a key project of the Porto School, illustrating the dialogue between modernity and Portuguese vernacular tradition.",
+                            "A study of a key project of the Porto School, illustrating the dialogue between modernity and Portuguese vernacular tradition.",
                             "Analysis of the access sequence through the park, of the tectonics of the masonry base and of the suspended timber roof. The emphasis is on the building's lightness, which fades away to leave room for observing the surrounding vegetation."
                         ]
                     },
@@ -457,8 +457,8 @@ window.SITE_DATA = {
                     process: [
                         { image: "img/pierre/schema_01.webp", caption: { fr: "L’assise (la fondation) : On creuse une tranchée pour poser les plus grosses pierres au sol. Elles doivent être enterrées pour éviter que le mur ne glisse.", en: "The foundation course (the base): A trench is dug to lay the largest stones on the ground. They must be buried to stop the wall from sliding." } },
                         { image: "img/pierre/schema_02.webp", caption: { fr: "Le fruit (l’inclinaison) : Le mur ne doit pas être parfaitement vertical. Il doit s’incliner légèrement vers l’intérieur (entre 10% et 15%). Cela déplace le centre de gravité vers le cœur de la structure.", en: "The batter (the slope): The wall must not be perfectly vertical. It should lean slightly inwards (between 10% and 15%). This shifts the centre of gravity towards the heart of the structure." } },
-                        { image: "img/pierre/schema_03.webp", caption: { fr: "Les boutisses : Ce sont des pierres longues posées dans le sens de l’épaisseur du mur. Elles traversent le mur de part en part pour lier le parement extérieur et intérieur. Ce sont les « clous » de la structure.", en: "Through-stones (headers): These are long stones laid across the thickness of the wall. They pass right through it to tie the outer and inner faces together. They are the “nails” of the structure." } },
-                        { image: "img/pierre/schema_04.webp", caption: { fr: "Le calage et le remplissage : On remplit l’intérieur du mur avec de la petite caillasse (le « tout-venant »). Attention : ces petits cailloux ne sont pas jetés au hasard, ils sont bloqués fermement pour empêcher les grosses pierres de bouger", en: "Wedging and filling: The inside of the wall is filled with small rubble (the “hearting”). Careful: these small stones are not thrown in at random; they are wedged firmly to stop the large stones from moving." } }
+                        { image: "img/pierre/schema_03.webp", caption: { fr: "Les boutisses : Ce sont des pierres longues posées dans le sens de l’épaisseur du mur. Elles traversent le mur de part en part pour lier le parement extérieur et intérieur. Ce sont les « clous » de la structure.", en: "Through-stones (headers): These are long stones laid across the thickness of the wall. They pass right through it to tie the outer and inner faces together. They are the “nails” of the structure." } },
+                        { image: "img/pierre/schema_04.webp", caption: { fr: "Le calage et le remplissage : On remplit l’intérieur du mur avec de la petite caillasse (le « tout-venant »). Attention : ces petits cailloux ne sont pas jetés au hasard, ils sont bloqués fermement pour empêcher les grosses pierres de bouger", en: "Wedging and filling: The inside of the wall is filled with small rubble (the “hearting”). Careful: these small stones are not thrown in at random; they are wedged firmly to stop the large stones from moving." } }
                     ],
                     // 2 cadres par ligne (2x2) pour les 4 planches du process,
                     // comme sur la page d'analyse du pavillon de tennis.
