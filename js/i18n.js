@@ -86,7 +86,7 @@
             profileSoftware: "Software",
             profileLanguages: "Languages",
             downloadCv: "Download CV (PDF)",
-            downloadCvFrench: "Download CV (PDF, in French)",
+            downloadCvFrench: "Download CV (PDF)",
             viewGallery: "View the Gallery",
 
             metaYear: "Year",
