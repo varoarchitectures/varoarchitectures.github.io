@@ -174,8 +174,8 @@ window.SITE_DATA = {
                     manifesto: "“Less is enough”, Pier Vittorio Aureli",
                     description: {
                         fr: [
-                            "Intention & référence : Inspiré par le manifeste « Less is Enough » de Pier Vittorio Aureli, le projet explore l'économie de moyens comme vecteur d'espaces. Le parpaing brut, laissé apparent, s'affirme comme un choix de simplicité : standard et économique.",
-                            "Dispositif spatial : Le plan s'étire en une ligne unitaire et compacte. La distribution s'opère par une coursive bioclimatique en polycarbonate le long de la façade : espace tampon captant les apports solaires en hiver, elle s'ouvre intégralement pour transformer le couloir en terrasse aux beaux jours, hybridant les limites entre intérieur et grand paysage."
+                            "Inspiré par le manifeste « Less is Enough » de Pier Vittorio Aureli, le projet explore l'économie de moyens comme vecteur d'espaces. Le parpaing brut, laissé apparent, s'affirme comme un choix de simplicité : standard et économique.",
+                            "Le plan s'étire en une ligne unitaire et compacte. La distribution s'opère par une coursive bioclimatique en polycarbonate le long de la façade : espace tampon captant les apports solaires en hiver, elle s'ouvre intégralement pour transformer le couloir en terrasse aux beaux jours, hybridant les limites entre intérieur et grand paysage."
                         ],
                         en: [
                             "Intention & reference: Inspired by Pier Vittorio Aureli's manifesto “Less is Enough”, the project explores economy of means as a generator of space. Raw concrete block, left exposed, asserts itself as a choice of simplicity: standard and economical.",
@@ -205,8 +205,8 @@ window.SITE_DATA = {
                     manifesto: { fr: "la conservation de l'existant. En le dupliquant, l'extension s'élance dans le parc pour s'y ancrer.", en: "preserving the existing. By duplicating it, the extension reaches out into the park to anchor itself there." },
                     description: {
                         fr: [
-                            "Implantation : Inscrit dans le parc Félix Thiollier, le projet instaure un dialogue morphologique avec l'existant.",
-                            "Volumétrie & lumière : La partition repose sur la duplication formelle du bâti d'origine, appliquée avec un léger glissement d'axe qui libère des perspectives vers le parc. Au centre, une large circulation commune sous verrière capte la lumière zénithale, transformant le simple couloir de distribution en un espace d'entre-deux lumineux dédié aux interactions."
+                            "Inscrit dans le parc Félix Thiollier, le projet instaure un dialogue morphologique avec l'existant.",
+                            "La partition repose sur la duplication formelle du bâti d'origine, appliquée avec un léger glissement d'axe qui libère des perspectives vers le parc. Au centre, une large circulation commune sous verrière capte la lumière zénithale, transformant le simple couloir de distribution en un espace d'entre-deux lumineux dédié aux interactions."
                         ],
                         en: [
                             "Siting: Set within the Parc Félix Thiollier, the project establishes a morphological dialogue with the existing building.",
@@ -241,8 +241,8 @@ window.SITE_DATA = {
                     manifesto: { fr: "Rester dans le village, c'est poursuivre le chemin de ronde et y fixer le projet. Enterrer et poser.", en: "To stay within the village is to continue the wall walk and fix the project to it. Bury and place." },
                     description: {
                         fr: [
-                            "Couture urbaine & enceinte : Encastré dans le dénivelé du site du cimetière, le projet redéfinit entièrement le partage des flux : le stationnement est relégué en contrebas au niveau de la salle polyvalente, libérant le niveau haut côté bourg au profit d'une esplanade entièrement piétonne autour du café. Traité en moellons bruts, le socle de la salle prolonge les murs des remparts et du château, intégrant le projet au cœur du bourg médiéval.",
-                            "Double temporalité : Posé sur un socle habité, le café se présente comme un pavillon ouvert et léger. Au quotidien, il fait office d'abri et de belvédère pour les randonneurs ; lors des rassemblements et fêtes de village, il bascule en café associatif et espace couvert, conciliant la pratique de proximité avec le village."
+                            "Encastré dans le dénivelé du site du cimetière, le projet redéfinit entièrement le partage des flux : le stationnement est relégué en contrebas au niveau de la salle polyvalente, libérant le niveau haut côté bourg au profit d'une esplanade entièrement piétonne autour du café. Traité en moellons bruts, le socle de la salle prolonge les murs des remparts et du château, intégrant le projet au cœur du bourg médiéval.",
+                            "Posé sur un socle habité, le café se présente comme un pavillon ouvert et léger. Au quotidien, il fait office d'abri et de belvédère pour les randonneurs ; lors des rassemblements et fêtes de village, il bascule en café associatif et espace couvert, conciliant la pratique de proximité avec le village."
                         ],
                         en: [
                             "Urban stitching & enclosure: Embedded in the slope of the cemetery site, the project completely redefines how flows are shared: parking is relegated to the lower level, alongside the multipurpose hall, freeing the upper level on the village side for a fully pedestrian esplanade around the café. Built in rough rubble stone, the base of the hall extends the walls of the ramparts and the castle, integrating the project into the heart of the medieval village.",
@@ -283,8 +283,8 @@ window.SITE_DATA = {
                     manifesto: { fr: "construire un bâtiment, pour façonner une place, pour façonner une ville.", en: "building a building to shape a square, to shape a city." },
                     description: {
                         fr: [
-                            "Enjeu : Étude de l'un des premiers édifices de la Renaissance florentine.",
-                            "Analyse : Décomposition de la travée modulaire carrée et de la perspective linéaire. L'analyse met en lumière la rigueur proportionnelle du portique (hauteur de colonne égale à l'entrecolonne et à la profondeur de la nef), opérant comme un seuil public géométrique entre la ville et l'institution."
+                            "Étude de l'un des premiers édifices de la Renaissance florentine.",
+                            "Décomposition de la travée modulaire carrée et de la perspective linéaire. L'analyse met en lumière la rigueur proportionnelle du portique (hauteur de colonne égale à l'entrecolonne et à la profondeur de la nef), opérant comme un seuil public géométrique entre la ville et l'institution."
                         ],
                         en: [
                             "Stakes: A study of one of the first buildings of the Florentine Renaissance.",
@@ -319,8 +319,8 @@ window.SITE_DATA = {
                     manifesto: { fr: "Un pavillon, comme moyen de voir. un dessous et un dessus, ouvrant sur le paysage, partitionnant la nature.", en: "A pavilion as a way of seeing: a below and an above, opening onto the landscape, partitioning nature." },
                     description: {
                         fr: [
-                            "Enjeu : Travail d'étude sur un projet clé de l'École de Porto, illustrant le dialogue entre modernité et tradition vernaculaire portugaise.",
-                            "Analyse : Analyse de la séquence d'accès dans le parc, de la tectonique du socle maçonné et de la toiture suspendue en bois. L'accent est mis sur la légèreté de l'édifice, qui s'efface pour l'observation de la végétation environnante."
+                            "Travail d'étude sur un projet clé de l'École de Porto, illustrant le dialogue entre modernité et tradition vernaculaire portugaise.",
+                            Analyse de la séquence d'accès dans le parc, de la tectonique du socle maçonné et de la toiture suspendue en bois. L'accent est mis sur la légèreté de l'édifice, qui s'efface pour l'observation de la végétation environnante."
                         ],
                         en: [
                             "Stakes: A study of a key project of the Porto School, illustrating the dialogue between modernity and Portuguese vernacular tradition.",
@@ -357,8 +357,8 @@ window.SITE_DATA = {
                     manifesto: { fr: "Une machine à habiter, un environnement artificiel.", en: "A machine for living, an artificial environment." },
                     description: {
                         fr: [
-                            "Enjeu : Donner une cohérence constructive à une utopie industrielle restée à l'état de prototype.",
-                            "Analyse : Modélisation et clarification des assemblages constructifs : mât central en aluminium, reprise des charges suspendues par câbles et peau aérodynamique. Le travail a consisté à résoudre les liaisons techniques et les proportions pour rendre cette machine à habiter structurellement plausible et spatialement lisible."
+                            "Donner une cohérence constructive à une utopie industrielle restée à l'état de prototype.",
+                            "Modélisation et clarification des assemblages constructifs : mât central en aluminium, reprise des charges suspendues par câbles et peau aérodynamique. Le travail a consisté à résoudre les liaisons techniques et les proportions pour rendre cette machine à habiter structurellement plausible et spatialement lisible."
                         ],
                         en: [
                             "Stakes: Giving constructive coherence to an industrial utopia that remained at the prototype stage.",
@@ -390,8 +390,8 @@ window.SITE_DATA = {
                     manifesto: { fr: "De simples assemblages, pour distribuer des charges et former une structure.", en: "Simple joints, to distribute loads and form a structure." },
                     description: {
                         fr: [
-                            "Thématique : Grandes portées et tectonique du bois.",
-                            "Restitution : Relevé analytique et dessin technique de la charpente bois. Décorticage du comportement mécanique sous charges dynamiques, articulation des liaisons d'assemblage et compréhension des flux d'efforts."
+                            "Grandes portées et tectonique du bois.",
+                            "Relevé analytique et dessin technique de la charpente bois. Décorticage du comportement mécanique sous charges dynamiques, articulation des liaisons d'assemblage et compréhension des flux d'efforts."
                         ],
                         en: [
                             "Theme: Long spans and timber tectonics.",
@@ -421,8 +421,8 @@ window.SITE_DATA = {
                     manifesto: { fr: "Une structure spatiale triangulée en trois dimensions, où chaque rotule fixe participe à la stabilité de l'ensemble.", en: "A triangulated three-dimensional space structure, where each fixed ball joint contributes to the stability of the whole." },
                     description: {
                         fr: [
-                            "Thématique : Systèmes réticulés et franchissement spatial.",
-                            "Restitution : Relevé géométrique sur site de la nappe métallique couvrant le bassin. Questionnement typologique (vraie ou fausse résille tridimensionnelle), modélisation des nœuds d'articulation et création d'une affiche liant précision technique et volonté artistique."
+                            "Systèmes réticulés et franchissement spatial.",
+                            "Relevé géométrique sur site de la nappe métallique couvrant le bassin. Questionnement typologique (vraie ou fausse résille tridimensionnelle), modélisation des nœuds d'articulation et création d'une affiche liant précision technique et volonté artistique."
                         ],
                         en: [
                             "Theme: Lattice systems and spatial spanning.",
@@ -451,8 +451,8 @@ window.SITE_DATA = {
                     manifesto: { fr: "Ici, l'équilibre ne vient pas de la légèreté mais du poids : la masse de pierre travaille contre la gravité plutôt qu'avec elle.", en: "Here, balance comes not from lightness but from weight: the mass of stone works against gravity rather than with it." },
                     description: {
                         fr: [
-                            "Thématique : Stéréotomie, gravité et inertie.",
-                            "Restitution : Analyse de l'équilibre de l'ouvrage sans liant moderne. Reconstitution du calepinage, étude des poussées latérales et repérage des caractéristiques qui assurent la pérennité structurelle de cet abri en pierres sèches."
+                            "Stéréotomie, gravité et inertie.",
+                            "Analyse de l'équilibre de l'ouvrage sans liant moderne. Reconstitution du calepinage, étude des poussées latérales et repérage des caractéristiques qui assurent la pérennité structurelle de cet abri en pierres sèches."
                         ],
                         en: [
                             "Theme: Stereotomy, gravity and inertia.",
