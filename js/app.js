@@ -7,6 +7,10 @@ window.addEventListener("unhandledrejection", function (e) {
     console.error("[app] Promesse rejetée non gérée :", e.reason);
 });
 
+// Langues : voir js/i18n.js (t = texte de contenu, ui = texte d'interface).
+function t(value) { return window.I18N ? window.I18N.t(value) : value; }
+function ui(key) { return window.I18N ? window.I18N.ui(key) : key; }
+
 function getEl(id) {
     const el = document.getElementById(id);
     if (!el) {
@@ -174,7 +178,7 @@ function normalizeGalleryItem(item) {
     }
     return {
         src: (item && (item.src || item.image)) || "",
-        caption: (item && item.caption) || "",
+        caption: (item && t(item.caption)) || "",
         pdf: (item && item.pdf) || ""
     };
 }
@@ -217,7 +221,7 @@ function renderGalleryImage() {
         if (counter) counter.textContent = (galleryState.index + 1) + " / " + total;
         // alt réel (et non vide) : sans ça, un lecteur d'écran n'a aucune
         // information sur l'image affichée dans la visionneuse.
-        img.alt = current.caption || galleryState.title || "Image de la galerie";
+        img.alt = current.caption || galleryState.title || ui("galleryImage");
 
         if (pdfLink) {
             if (current.pdf) {
@@ -307,7 +311,7 @@ window.openGallery = function (experienceId) {
             return;
         }
 
-        showGalleryModal(exp.images, exp.title || "", 0);
+        showGalleryModal(exp.images, t(exp.title) || "", 0);
     } catch (err) {
         console.error("[app] Erreur dans openGallery :", err);
     }
@@ -604,7 +608,7 @@ function runExplodeAnimation() {
         const projSpans = wordProjects.querySelectorAll(".letter");
         const expSpans = wordExperiences.querySelectorAll(".letter");
 
-        if (startSpans.length < 9 || projSpans.length < 7 || expSpans.length < 11) {
+        if (startSpans.length < 9 || projSpans.length < 7 || expSpans.length < 10) {
             console.error("[app] Le nombre de lettres attendu ne correspond pas au HTML : animation annulée.");
             title.style.pointerEvents = "auto";
             return;
@@ -614,7 +618,7 @@ function runExplodeAnimation() {
             { source: 0, targetWord: projSpans, targetIndex: 0 },
             { source: 1, targetWord: projSpans, targetIndex: 2 },
             { source: 2, targetWord: expSpans, targetIndex: 4 },
-            { source: 3, targetWord: projSpans, targetIndex: 5 },
+            { source: 3, targetWord: projSpans, targetIndex: projSpans.length - 2 }, // le T (PROJETS : 5, PROJECTS : 6)
             { source: 4, targetWord: null, targetIndex: null },
             { source: 5, targetWord: null, targetIndex: null },
             { source: 6, targetWord: null, targetIndex: null },
@@ -779,6 +783,25 @@ function runExplodeAnimation() {
    Remplace l'ancien "onclick" inline dans le HTML, qui n'était accessible
    qu'à la souris (un <div> n'est pas focusable/activable au clavier par défaut).
    -------------------------------------------------------------------------- */
+// Les mots PROJETS/PROJECTS et EXPERIENCES/EXPERIENCE sont découpés en <span class="letter">
+// pour l'animation. On les reconstruit à chaque changement de langue.
+function renderLandingWords() {
+    [["word-projects", "wordProjects"], ["word-experiences", "wordExperiences"]].forEach(function (pair) {
+        const el = getEl(pair[0]);
+        if (!el) return;
+        const word = ui(pair[1]);
+        el.innerHTML = "";
+        el.setAttribute("aria-label", word);
+        word.split("").forEach(function (ch) {
+            const span = document.createElement("span");
+            span.className = "letter";
+            span.setAttribute("aria-hidden", "true");
+            span.textContent = ch;
+            el.appendChild(span);
+        });
+    });
+}
+
 function setupPage1Entry() {
     const page1 = getEl("page1");
     if (!page1) return;
@@ -870,8 +893,10 @@ function applyRoute() {
 window.addEventListener("popstate", applyRoute);
 
 function initApp() {
+    renderLandingWords();
     setupPage1Entry();
     applyRoute();
+    if (window.I18N) window.I18N.onChange(renderLandingWords);
 }
 
 if (document.readyState === "loading") {

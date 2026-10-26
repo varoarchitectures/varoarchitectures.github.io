@@ -3,6 +3,10 @@
 (function () {
     "use strict";
 
+    // Langues : voir js/i18n.js (t = texte de contenu, ui = texte d'interface).
+    function t(value) { return window.I18N ? window.I18N.t(value) : value; }
+    function ui(key) { return window.I18N ? window.I18N.ui(key) : key; }
+
     function attachImageFallback(imgEl) {
         imgEl.addEventListener("error", function onError() {
             imgEl.removeEventListener("error", onError);
@@ -14,7 +18,7 @@
                     '<rect width="100%" height="100%" fill="#e5e5e5"/>' +
                     '<text x="50%" y="50%" font-family="sans-serif" font-size="24" ' +
                     'fill="#9ca3af" text-anchor="middle" dominant-baseline="middle">' +
-                    "Image indisponible</text></svg>"
+                    ui("imgUnavailable") + "</text></svg>"
                 );
         });
     }
@@ -69,50 +73,58 @@
                     (f) =>
                         '<div class="flex gap-4">' +
                         '<span class="font-medium min-w-[40px]">' + escapeHtml(f.year) + "</span>" +
-                        '<span class="text-gray-700">' + escapeHtml(f.label) + "</span>" +
+                        '<span class="text-gray-700">' + escapeHtml(t(f.label)) + "</span>" +
                         "</div>"
                 )
                 .join("");
 
             const softwareHtml = (p.software || [])
-                .map((s) => "<li>" + escapeHtml(s) + "</li>")
+                .map((s) => "<li>" + escapeHtml(t(s)) + "</li>")
                 .join("");
 
             const languagesHtml = (p.languages || [])
-                .map((l) => "<li>" + escapeHtml(l) + "</li>")
+                .map((l) => "<li>" + escapeHtml(t(l)) + "</li>")
                 .join("");
 
             const email = decodeContactField(p.contact.emailParts);
             const phone = decodeContactField(p.contact.phoneParts);
             const phoneHref = phone.replace(/[^+\d]/g, "");
 
+            // CV : un fichier par langue (voir profile.cv dans data.js). Tant qu'il n'y a pas
+            // de version anglaise, le lien EN pointe vers le CV français et l'indique.
+            const cvFr = (p.cv && p.cv.fr) || "cv/Pablo-Varo-CV.pdf";
+            const cvHref = (p.cv && t(p.cv)) || cvFr;
+            const cvLabel = cvHref === cvFr && window.I18N && window.I18N.lang !== "fr"
+                ? ui("downloadCvFrench")
+                : ui("downloadCv");
+
             container.innerHTML = `
                 <div>
                     <h2 class="text-4xl md:text-5xl font-light tracking-widest uppercase mb-2">${escapeHtml(p.name)}</h2>
-                    <p class="text-gray-500 uppercase tracking-widest text-sm mb-6">${escapeHtml(p.role)}</p>
-                    <p class="font-light leading-relaxed text-gray-800">${escapeHtml(p.bio)}</p>
-                    <a href="cv/Pablo-Varo-CV.pdf" download
+                    <p class="text-gray-500 uppercase tracking-widest text-sm mb-6">${escapeHtml(t(p.role))}</p>
+                    <p class="font-light leading-relaxed text-gray-800">${escapeHtml(t(p.bio))}</p>
+                    <a href="${escapeHtml(cvHref)}" download
                        class="block mt-6 text-sm uppercase tracking-widest font-medium underline underline-offset-4 hover:text-gray-400 transition-colors">
-                        Télécharger le CV (PDF)
+                        ${escapeHtml(cvLabel)}
                     </a>
                 </div>
 
                 <div class="w-full h-px bg-black/20"></div>
 
                 <div>
-                    <h3 class="uppercase tracking-[0.15em] text-sm font-medium mb-4">Contact</h3>
+                    <h3 class="uppercase tracking-[0.15em] text-sm font-medium mb-4">${escapeHtml(ui("profileContact"))}</h3>
                     <ul class="space-y-2 font-light text-sm text-gray-700">
-                        <li>${escapeHtml(p.contact.address)}</li>
+                        <li>${escapeHtml(t(p.contact.address))}</li>
                         <li><a href="mailto:${escapeHtml(email)}" class="hover:text-black hover:underline underline-offset-4">${escapeHtml(email)}</a></li>
                         <li><a href="tel:${escapeHtml(phoneHref)}" class="hover:text-black hover:underline underline-offset-4">${escapeHtml(phone)}</a></li>
-                        <li>${escapeHtml(p.contact.permit)}</li>
+                        <li>${escapeHtml(t(p.contact.permit))}</li>
                     </ul>
                 </div>
 
                 <div class="w-full h-px bg-black/20"></div>
 
                 <div>
-                    <h3 class="uppercase tracking-[0.15em] text-sm font-medium mb-4">Formation</h3>
+                    <h3 class="uppercase tracking-[0.15em] text-sm font-medium mb-4">${escapeHtml(ui("profileEducation"))}</h3>
                     <div class="space-y-4 font-light text-sm">${formationHtml}</div>
                 </div>
 
@@ -120,18 +132,18 @@
 
                 <div class="grid grid-cols-2 gap-8">
                     <div>
-                        <h3 class="uppercase tracking-[0.15em] text-sm font-medium mb-4">Logiciels</h3>
+                        <h3 class="uppercase tracking-[0.15em] text-sm font-medium mb-4">${escapeHtml(ui("profileSoftware"))}</h3>
                         <ul class="space-y-1 font-light text-sm text-gray-700">${softwareHtml}</ul>
                     </div>
                     <div>
-                        <h3 class="uppercase tracking-[0.15em] text-sm font-medium mb-4">Langues</h3>
+                        <h3 class="uppercase tracking-[0.15em] text-sm font-medium mb-4">${escapeHtml(ui("profileLanguages"))}</h3>
                         <ul class="space-y-1 font-light text-sm text-gray-700">${languagesHtml}</ul>
                     </div>
                 </div>
             `;
         } catch (err) {
             console.error("[render] Erreur lors de l'affichage du profil :", err);
-            showSectionError(container, "Le profil n'a pas pu être chargé.");
+            showSectionError(container, ui("errProfile"));
         }
     }
 
@@ -156,7 +168,7 @@
                     // séparés par des points médians : "Vinaigre de bois · greffe · engrais"
                     const skillsHtml = exp.detail
                         ? `<p class="mt-3 text-sm text-gray-500 tracking-wide leading-relaxed">
-                               ${escapeHtml(formatSkills(exp.detail))}
+                               ${escapeHtml(formatSkills(t(exp.detail)))}
                            </p>`
                         : "";
 
@@ -169,24 +181,24 @@
                         ? `<button type="button" data-gallery-id="${escapeHtml(exp.id)}"
                                class="gallery-trigger relative block text-left mb-2 cursor-pointer">
                                <span class="block text-xl md:text-2xl font-medium uppercase tracking-wider leading-tight transition-opacity duration-300 group-hover:opacity-0">
-                                   ${escapeHtml(exp.title)}
+                                   ${escapeHtml(t(exp.title))}
                                </span>
                                <span class="absolute inset-0 flex items-center text-xl md:text-2xl font-medium uppercase tracking-wider leading-tight text-gray-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                                   Voir la Galerie
+                                   ${escapeHtml(ui("viewGallery"))}
                                </span>
                            </button>`
-                        : `<h3 class="text-xl md:text-2xl font-medium uppercase tracking-wider leading-tight mb-2">${escapeHtml(exp.title)}</h3>`;
+                        : `<h3 class="text-xl md:text-2xl font-medium uppercase tracking-wider leading-tight mb-2">${escapeHtml(t(exp.title))}</h3>`;
 
                     return `
                         <div class="border-t border-black py-10 grid grid-cols-1 md:grid-cols-4 gap-6 group${isLast ? " border-b" : ""}">
                             <div class="md:col-span-1 text-2xl font-light tracking-wide text-gray-500 group-hover:text-black transition-colors">
-                                ${escapeHtml(exp.period)}
+                                ${escapeHtml(t(exp.period))}
                             </div>
                             <div class="md:col-span-3">
                                 ${titleHtml}
-                                <p class="text-sm uppercase tracking-widest text-gray-500 mb-4">${escapeHtml(exp.subtitle)}</p>
+                                <p class="text-sm uppercase tracking-widest text-gray-500 mb-4">${escapeHtml(t(exp.subtitle))}</p>
                                 <p class="text-gray-600 font-light leading-relaxed">
-                                    ${escapeHtml(exp.description)}
+                                    ${escapeHtml(t(exp.description))}
                                 </p>
                                 ${skillsHtml}
                             </div>
@@ -207,7 +219,7 @@
             });
         } catch (err) {
             console.error("[render] Erreur lors de l'affichage des expériences :", err);
-            showSectionError(container, "Les expériences n'ont pas pu être chargées.");
+            showSectionError(container, ui("errExperiences"));
         }
     }
 
@@ -228,14 +240,14 @@
                     (proj) => `
                         <a href="#/projets/${escapeHtml(proj.id)}" data-project-id="${escapeHtml(proj.id)}" class="project-link group block">
                             <div class="relative w-full ${aspectClass} overflow-hidden bg-gray-100">
-                                <img src="${escapeHtml(proj.image)}" alt="${escapeHtml(proj.alt || proj.title)}"
+                                <img src="${escapeHtml(proj.image)}" alt="${escapeHtml(t(proj.alt || proj.title))}"
                                      loading="lazy" decoding="async"
                                      class="cv-image w-full h-full object-cover object-top" data-fallback="true">
                                 <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 pointer-events-none"></div>
                             </div>
                             <div class="pt-4 flex items-start justify-between gap-4">
-                                <h3 class="text-base md:text-lg font-medium uppercase tracking-wider">${escapeHtml(proj.title)}</h3>
-                                <span class="text-xs uppercase tracking-widest text-gray-500 whitespace-nowrap">${escapeHtml(proj.meta)}</span>
+                                <h3 class="text-base md:text-lg font-medium uppercase tracking-wider">${escapeHtml(t(proj.title))}</h3>
+                                <span class="text-xs uppercase tracking-widest text-gray-500 whitespace-nowrap">${escapeHtml(t(proj.meta))}</span>
                             </div>
                         </a>
                     `
@@ -257,7 +269,7 @@
             });
         } catch (err) {
             console.error("[render] Erreur lors de l'affichage de la grille '" + containerId + "' :", err);
-            showSectionError(container, "Ces projets n'ont pas pu être chargés.");
+            showSectionError(container, ui("errProjects"));
         }
     }
 
@@ -280,6 +292,9 @@
         return [].concat(data.conception || [], data.analyse || [], data.objet || []);
     }
 
+    // Dernier projet affiché : permet de redessiner la page au changement de langue.
+    let currentDetailId = null;
+
     function renderProjectDetail(projectId) {
         try {
             const all = flattenProjects();
@@ -288,23 +303,35 @@
 
             const proj = all[idx];
             const d = proj.detail || {};
+            currentDetailId = projectId;
 
             const breadcrumb = document.getElementById("detail-breadcrumb-title");
-            if (breadcrumb) breadcrumb.textContent = proj.title;
+            if (breadcrumb) breadcrumb.textContent = t(proj.title);
 
             const titleEl = document.getElementById("detail-title");
-            if (titleEl) titleEl.textContent = proj.title;
+            if (titleEl) titleEl.textContent = t(proj.title);
 
             const manifestoEl = document.getElementById("detail-manifesto");
-            if (manifestoEl) manifestoEl.textContent = d.manifesto || "";
+            if (manifestoEl) manifestoEl.textContent = t(d.manifesto) || "";
+
+            // Texte d'intention : une chaîne ou un tableau de paragraphes (champ
+            // "description" de data.js). Masqué s'il est vide.
+            const descriptionEl = document.getElementById("detail-description");
+            if (descriptionEl) {
+                const rawDescription = t(d.description);
+                const paragraphs = (Array.isArray(rawDescription) ? rawDescription : [rawDescription])
+                    .filter((txt) => typeof txt === "string" && txt.trim() !== "");
+                descriptionEl.innerHTML = paragraphs.map((txt) => "<p>" + escapeHtml(txt) + "</p>").join("");
+                descriptionEl.classList.toggle("hidden", paragraphs.length === 0);
+            }
 
             const metaEl = document.getElementById("detail-meta");
             if (metaEl) {
                 const rows = [
-                    ["Année", d.year],
-                    ["Semestre", d.semester],
-                    ["Enseignant", d.teacher],
-                    ["Lieu", d.location]
+                    [ui("metaYear"), t(d.year)],
+                    [ui("metaSemester"), t(d.semester)],
+                    [ui("metaTeacher"), t(d.teacher)],
+                    [ui("metaLocation"), t(d.location)]
                 ];
                 metaEl.innerHTML = rows
                     .filter(([, value]) => !!value)
@@ -331,7 +358,7 @@
                 heroImg.addEventListener("load", revealHero, { once: true });
 
                 heroImg.src = d.hero || proj.image || "";
-                heroImg.alt = proj.alt || proj.title;
+                heroImg.alt = t(proj.alt || proj.title);
                 attachImageFallback(heroImg);
 
                 if (heroImg.complete && heroImg.naturalWidth > 0) {
@@ -374,9 +401,9 @@
                             (item) => `
                                 <figure class="flex flex-col items-center text-center">
                                     <div class="w-full max-w-[220px] aspect-square bg-gray-50 overflow-hidden">
-                                        <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.caption || "")}" loading="lazy" decoding="async" class="w-full h-full object-cover" data-fallback="true">
+                                        <img src="${escapeHtml(item.image)}" alt="${escapeHtml(t(item.caption) || "")}" loading="lazy" decoding="async" class="w-full h-full object-cover" data-fallback="true">
                                     </div>
-                                    ${item.caption ? '<figcaption class="mt-4 text-xs uppercase tracking-[0.15em] text-gray-500">' + escapeHtml(item.caption) + "</figcaption>" : ""}
+                                    ${t(item.caption) ? '<figcaption class="mt-4 text-xs uppercase tracking-[0.15em] text-gray-500">' + escapeHtml(t(item.caption)) + "</figcaption>" : ""}
                                 </figure>
                             `
                         )
@@ -392,7 +419,7 @@
             const tectonicDocs = tectonicList.map((img) => ({
                 image: img,
                 pdf: !Array.isArray(d.tectonic) ? d.tectonicPdf : undefined,
-                caption: d.tectonicTitle || "Détail constructif"
+                caption: t(d.tectonicTitle) || ui("detailConstructive")
             }));
 
             const projectDocuments = []
@@ -429,11 +456,11 @@
                                         <figure class="flex flex-col items-center">
                                             <button type="button" class="doc-viewer-trigger group/doc relative bg-white flex items-center justify-center overflow-hidden cursor-zoom-in appearance-none border-0 p-0 m-0" style="height: ${frameHeight}; max-width: 100%;"
                                                     data-doc-index="${projectDocuments.indexOf(item)}">
-                                                <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.caption || "")}" loading="lazy" decoding="async" class="max-w-full max-h-full object-contain" data-fallback="true">
+                                                <img src="${escapeHtml(item.image)}" alt="${escapeHtml(t(item.caption) || "")}" loading="lazy" decoding="async" class="max-w-full max-h-full object-contain" data-fallback="true">
                                                 <span class="absolute inset-0 bg-black/0 group-hover/doc:bg-black/5 transition-colors duration-300 pointer-events-none"></span>
-                                                <span class="absolute bottom-3 right-3 text-[10px] uppercase tracking-[0.15em] bg-white/90 px-2 py-1 opacity-0 group-hover/doc:opacity-100 transition-opacity duration-300">Agrandir</span>
+                                                <span class="absolute bottom-3 right-3 text-[10px] uppercase tracking-[0.15em] bg-white/90 px-2 py-1 opacity-0 group-hover/doc:opacity-100 transition-opacity duration-300">${escapeHtml(ui("enlarge"))}</span>
                                             </button>
-                                            ${item.caption ? '<figcaption class="mt-6 text-xs uppercase tracking-[0.15em] text-gray-500 text-center">' + escapeHtml(item.caption) + "</figcaption>" : ""}
+                                            ${t(item.caption) ? '<figcaption class="mt-6 text-xs uppercase tracking-[0.15em] text-gray-500 text-center">' + escapeHtml(t(item.caption)) + "</figcaption>" : ""}
                                         </figure>
                                     `
                                 )
@@ -451,7 +478,7 @@
                     technicalGrid.querySelectorAll(".doc-viewer-trigger").forEach((btn) => {
                         btn.addEventListener("click", function () {
                             if (typeof window.openProjectDocuments === "function") {
-                                window.openProjectDocuments(projectDocuments, proj.title, parseInt(btn.getAttribute("data-doc-index"), 10));
+                                window.openProjectDocuments(projectDocuments, t(proj.title), parseInt(btn.getAttribute("data-doc-index"), 10));
                             }
                         });
                     });
@@ -466,16 +493,16 @@
                     if (tectonicSection) tectonicSection.classList.add("hidden");
                 } else {
                     if (tectonicSection) tectonicSection.classList.remove("hidden");
-                    if (tectonicTitleEl) tectonicTitleEl.textContent = d.tectonicTitle || "Détail";
+                    if (tectonicTitleEl) tectonicTitleEl.textContent = t(d.tectonicTitle) || ui("sectionDetail");
 
                     tectonicGrid.innerHTML = tectonicDocs
                         .map(
                             (item) => `
                                 <button type="button" class="doc-viewer-trigger group/doc relative bg-white flex items-center justify-center overflow-hidden cursor-zoom-in appearance-none border-0 p-0 m-0 w-full" style="height: 62vh; max-width: 100%;"
                                         data-doc-index="${projectDocuments.indexOf(item)}">
-                                    <img src="${escapeHtml(item.image)}" alt="${escapeHtml(proj.title)} \u2014 ${escapeHtml(item.caption || "")}" loading="lazy" decoding="async" class="max-w-full max-h-full object-contain" data-fallback="true">
+                                    <img src="${escapeHtml(item.image)}" alt="${escapeHtml(t(proj.title))} \u2014 ${escapeHtml(item.caption || "")}" loading="lazy" decoding="async" class="max-w-full max-h-full object-contain" data-fallback="true">
                                     <span class="absolute inset-0 bg-black/0 group-hover/doc:bg-black/5 transition-colors duration-300 pointer-events-none"></span>
-                                    <span class="absolute bottom-3 right-3 text-[10px] uppercase tracking-[0.15em] bg-white/90 px-2 py-1 opacity-0 group-hover/doc:opacity-100 transition-opacity duration-300">Agrandir</span>
+                                    <span class="absolute bottom-3 right-3 text-[10px] uppercase tracking-[0.15em] bg-white/90 px-2 py-1 opacity-0 group-hover/doc:opacity-100 transition-opacity duration-300">${escapeHtml(ui("enlarge"))}</span>
                                 </button>
                             `
                         )
@@ -484,8 +511,63 @@
                     tectonicGrid.querySelectorAll(".doc-viewer-trigger").forEach((btn) => {
                         btn.addEventListener("click", function () {
                             if (typeof window.openProjectDocuments === "function") {
-                                window.openProjectDocuments(projectDocuments, proj.title, parseInt(btn.getAttribute("data-doc-index"), 10));
+                                window.openProjectDocuments(projectDocuments, t(proj.title), parseInt(btn.getAttribute("data-doc-index"), 10));
                             }
+                        });
+                    });
+                }
+            }
+
+            // Numérotation et sommaire des sections réellement présentes : un projet
+            // sans processus affiche "01 — Dessins, 02 — Détail", pas de trou, et le
+            // sommaire du cartouche ne propose que ce qui existe sur la page.
+            const sectionDefs = [
+                {
+                    section: processSection,
+                    titleEl: document.getElementById("detail-process-title"),
+                    label: ui("sectionProcess"),
+                    present: Array.isArray(d.process) && d.process.length > 0
+                },
+                {
+                    section: technicalSection,
+                    titleEl: document.getElementById("detail-technical-title"),
+                    label: ui("sectionDrawings"),
+                    present: Array.isArray(d.technical) && d.technical.length > 0
+                },
+                {
+                    section: tectonicSection,
+                    titleEl: tectonicTitleEl,
+                    label: t(d.tectonicTitle) || ui("sectionDetail"),
+                    present: tectonicDocs.length > 0
+                }
+            ].filter((def) => def.present && def.section && def.titleEl);
+
+            sectionDefs.forEach((def, i) => {
+                def.number = String(i + 1).padStart(2, "0");
+                def.titleEl.textContent = def.number + " \u2014 " + def.label;
+            });
+
+            const sectionsNav = document.getElementById("detail-sections-nav");
+            if (sectionsNav) {
+                if (sectionDefs.length < 2) {
+                    sectionsNav.innerHTML = "";
+                    sectionsNav.classList.add("hidden");
+                    sectionsNav.classList.remove("flex");
+                } else {
+                    sectionsNav.innerHTML = sectionDefs
+                        .map(
+                            (def, i) =>
+                                '<button type="button" data-section-index="' + i + '" class="text-gray-500 hover:text-black transition-colors appearance-none bg-transparent border-0 p-0 cursor-pointer uppercase tracking-[0.15em]">' +
+                                '<span class="text-gray-400 mr-2">' + def.number + "</span>" + escapeHtml(def.label) +
+                                "</button>"
+                        )
+                        .join("");
+                    sectionsNav.classList.remove("hidden");
+                    sectionsNav.classList.add("flex");
+                    sectionsNav.querySelectorAll("button").forEach((btn) => {
+                        btn.addEventListener("click", function () {
+                            const def = sectionDefs[parseInt(btn.getAttribute("data-section-index"), 10)];
+                            if (def && def.section) def.section.scrollIntoView({ behavior: "smooth", block: "start" });
                         });
                     });
                 }
@@ -532,6 +614,16 @@
         renderProfile();
         renderExperiences();
         renderProjects();
+
+        // Changement de langue : on redessine tout ce qui vient de data.js.
+        if (window.I18N) {
+            window.I18N.onChange(function () {
+                renderProfile();
+                renderExperiences();
+                renderProjects();
+                if (currentDetailId) renderProjectDetail(currentDetailId);
+            });
+        }
     }
 
     if (document.readyState === "loading") {

@@ -15,8 +15,10 @@ portfolio/
 │   └── style.css        → tous les styles personnalisés (hors Tailwind)
 ├── src/
 │   └── input.css         → point d'entrée Tailwind (@tailwind base/components/utilities)
+├── fonts/               → police Jost hébergée en local (woff2 + licence OFL)
 ├── js/
-│   ├── data.js           → TOUT le contenu du site (textes, images, projets)
+│   ├── data.js           → TOUT le contenu du site (textes FR/EN, images, projets)
+│   ├── i18n.js           → gestion des langues : détection, dictionnaire de l'interface, bouton FR/EN
 │   ├── render.js          → transforme data.js en HTML dans la page
 │   └── app.js              → navigation entre pages + animation du mot PORTFOLIO
 ├── tailwind.config.js  → config Tailwind (fichiers scannés, classes forcées)
@@ -24,10 +26,30 @@ portfolio/
 └── README.md
 ```
 
+## Version française / anglaise
+
+Le site est bilingue (bouton **FR · EN** en bas à droite). Au premier chargement, la
+langue suit celle du navigateur (français par défaut) ; le choix est ensuite mémorisé.
+Pour envoyer directement la version anglaise : `https://varoarchitectures.github.io/?lang=en`.
+
+- **Contenu** (`js/data.js`) : tout texte s'écrit `{ fr: "…", en: "…" }`. Une simple
+  chaîne `"…"` s'affiche à l'identique dans les deux langues (noms propres, années…).
+  Les chemins d'images ne se traduisent pas. Pour ajouter un projet, copie un objet
+  existant et traduis ses textes.
+- **Interface** (boutons, titres de section, messages) : dictionnaire `UI` en haut de
+  `js/i18n.js`, une entrée `fr` et une entrée `en` par clé.
+- **CV** : `profile.cv` dans `data.js`. Tant qu'il n'existe pas de CV anglais, le lien EN
+  pointe vers le CV français et l'indique. Dépose `cv/Pablo-Varo-CV-en.pdf` puis remplace
+  le chemin `en`.
+- **`<noscript>` dans `index.html`** : copie statique FR + EN de la liste des projets,
+  à mettre à jour à la main.
+- Les mots de la page d'accueil (PROJETS / PROJECTS, EXPERIENCES / EXPERIENCE) sont
+  reconstruits à chaque changement de langue : l'animation des lettres s'adapte seule.
+
 ## Pour modifier le contenu (le plus courant)
 
 Tout se passe dans **`js/data.js`** :
-- `profile` → nom, bio, contact, formation, logiciels, langues
+- `profile` → nom, bio, contact, CV, formation, logiciels, langues
 - `experiences` → chaque entrée de la timeline CV (ajoute/enlève un objet dans le tableau)
 - `projects.conception` / `projects.analyse` / `projects.objet` → les projets de la page PROJECTS
 

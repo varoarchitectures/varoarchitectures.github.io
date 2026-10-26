@@ -19,6 +19,7 @@
     <meta property="og:image" content="https://varoarchitectures.github.io/img/accueil.webp">
     <meta property="og:url" content="https://varoarchitectures.github.io/">
     <meta property="og:locale" content="fr_FR">
+    <meta property="og:locale:alternate" content="en_US">
 
     <!-- Partage sur X / Twitter -->
     <meta name="twitter:card" content="summary_large_image">
@@ -55,12 +56,9 @@
     <!-- Tailwind CSS (compilé localement, voir README > "Style / Tailwind") -->
     <link href="css/tailwind.css" rel="stylesheet">
 
-    <!-- Préconnexion : établit la connexion vers Google Fonts avant même de lire
-         la balise <link> plus bas, ce qui accélère le chargement de la police Jost. -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Police géométrique et sobre -->
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Police Jost hébergée en local (voir @font-face dans css/style.css et fonts/).
+         Préchargement de la graisse 300 (titres) pour éviter un flash de police. -->
+    <link rel="preload" href="fonts/jost-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Préchargement de l'image de fond de la landing page : elle est visible
          immédiatement mais chargée via CSS (.bg-image), donc le navigateur ne
@@ -75,7 +73,7 @@
     <!-- PAGE 1 : LANDING PAGE
          Accessible au clavier (role="button" + tabindex + gestion Entrée/Espace)
          et à la molette de la souris (voir js/app.js, setupPage1Entry). -->
-    <div id="page1" class="absolute inset-0 w-full h-full bg-image flex flex-col z-10 transition-opacity duration-1000 cursor-pointer" role="button" tabindex="0" aria-label="Ouvrir le portfolio">
+    <div id="page1" class="absolute inset-0 w-full h-full bg-image flex flex-col z-10 transition-opacity duration-1000 cursor-pointer" role="button" tabindex="0" aria-label="Ouvrir le portfolio" data-i18n-aria="openPortfolio">
         <div class="absolute inset-0 bg-black/40"></div>
 
         <header class="relative z-20 flex justify-between items-center p-8 md:p-12 w-full uppercase tracking-widest text-sm md:text-base font-medium">
@@ -120,7 +118,7 @@
                     <svg class="w-6 h-6 transform group-hover:-translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                     </svg>
-                    Retour
+                    <span data-i18n="back">Retour</span>
                 </button>
             </div>
 
@@ -150,15 +148,15 @@
                     <svg class="w-6 h-6 transform group-hover:-translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                     </svg>
-                    Retour
+                    <span data-i18n="back">Retour</span>
                 </button>
             </div>
 
             <!-- SECTION 1: CONCEPTION (3 projets -> grille 3 colonnes) -->
             <section class="mb-24 md:mb-32">
                 <div class="flex items-baseline justify-between border-b border-black pb-4 mb-10">
-                    <h2 class="text-2xl md:text-4xl font-light tracking-[0.2em] uppercase">Conception</h2>
-                    <span class="text-xs md:text-sm tracking-[0.2em] uppercase text-gray-500">Projets de conception d'architectures</span>
+                    <h2 class="text-2xl md:text-4xl font-light tracking-[0.2em] uppercase" data-i18n="headingDesign">Conception</h2>
+                    <span class="text-xs md:text-sm tracking-[0.2em] uppercase text-gray-500" data-i18n="subDesign">Projets de conception d'architectures</span>
                 </div>
                 <div id="conception-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
                     <p class="content-error">Chargement des projets…</p>
@@ -168,8 +166,8 @@
             <!-- SECTION 2: ANALYSES (même grille que Conception) -->
             <section class="mb-24 md:mb-32">
                 <div class="flex items-baseline justify-between border-b border-black pb-4 mb-10">
-                    <h2 class="text-2xl md:text-4xl font-light tracking-[0.2em] uppercase">Analyses</h2>
-                    <span class="text-xs md:text-sm tracking-[0.2em] uppercase text-gray-500">Etudes et analyses d'architectures</span>
+                    <h2 class="text-2xl md:text-4xl font-light tracking-[0.2em] uppercase" data-i18n="headingAnalysis">Analyses</h2>
+                    <span class="text-xs md:text-sm tracking-[0.2em] uppercase text-gray-500" data-i18n="subAnalysis">Études et analyses d'architectures</span>
                 </div>
                 <div id="analyse-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
                     <p class="content-error">Chargement des projets…</p>
@@ -179,8 +177,8 @@
             <!-- SECTION 3: WORKSHOPS (même grille, taille de vignette identique) -->
             <section class="mb-16">
                 <div class="flex items-baseline justify-between border-b border-black pb-4 mb-10">
-                    <h2 class="text-2xl md:text-4xl font-light tracking-[0.2em] uppercase">Workshops</h2>
-                    <span class="text-xs md:text-sm tracking-[0.2em] uppercase text-gray-500">Etude et travail des matériaux</span>
+                    <h2 class="text-2xl md:text-4xl font-light tracking-[0.2em] uppercase" data-i18n="headingWorkshops">Workshops</h2>
+                    <span class="text-xs md:text-sm tracking-[0.2em] uppercase text-gray-500" data-i18n="subWorkshops">Étude et travail des matériaux</span>
                 </div>
                 <div id="objet-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
                     <p class="content-error">Chargement des projets…</p>
@@ -203,7 +201,7 @@
                     <svg class="w-6 h-6 transform group-hover:-translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                     </svg>
-                    Retour
+                    <span data-i18n="back">Retour</span>
                 </button>
                 <nav class="flex items-center gap-3 text-xs tracking-[0.2em] uppercase text-gray-500">
                     <span>/</span>
@@ -217,8 +215,12 @@
                     <div class="max-w-xl">
                         <h1 id="detail-title" class="text-4xl md:text-6xl font-light tracking-wide leading-tight mb-6"></h1>
                         <p id="detail-manifesto" class="text-lg md:text-xl font-light italic text-gray-500"></p>
+                        <!-- Texte d'intention (champ "description" de data.js), masqué s'il est vide. -->
+                        <div id="detail-description" class="hidden mt-8 md:mt-10 space-y-4 font-light leading-relaxed text-gray-800"></div>
                     </div>
                     <dl id="detail-meta" class="grid grid-cols-2 gap-x-8 gap-y-3 text-xs uppercase tracking-[0.15em] max-w-xl"></dl>
+                    <!-- Sommaire : ne liste que les sections présentes dans ce projet (rempli par render.js). -->
+                    <nav id="detail-sections-nav" class="hidden flex-wrap gap-x-8 gap-y-2 text-xs uppercase tracking-[0.15em] max-w-xl" aria-label="Sections du projet" data-i18n-aria="sectionsNav"></nav>
                 </div>
                 <div class="lg:w-1/2 flex justify-center order-1 lg:order-2">
                     <div id="detail-hero-frame" class="w-full bg-gray-100 overflow-hidden" style="aspect-ratio: 10 / 13; max-height: 78vh; max-width: 100%;">
@@ -229,14 +231,14 @@
 
             <!-- 2. PROCESS (white space) -->
             <section id="detail-process-section" class="min-h-screen flex flex-col justify-center">
-                <h2 class="text-xs uppercase tracking-[0.2em] text-gray-500 mb-10 md:mb-14">Processus</h2>
+                <h2 id="detail-process-title" class="text-xs uppercase tracking-[0.2em] text-gray-500 mb-10 md:mb-14">Processus</h2>
                 <div id="detail-process-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-16 md:gap-24"></div>
             </section>
 
             <!-- 3. TECHNIQUE (plans / coupes), regroupés par paires : un écran par paire,
                  rempli dynamiquement par render.js selon l'ordre du tableau "technical" de data.js. -->
             <section id="detail-technical-section">
-                <h2 class="text-xs uppercase tracking-[0.2em] text-gray-500 pt-16 md:pt-20">Dessins</h2>
+                <h2 id="detail-technical-title" class="text-xs uppercase tracking-[0.2em] text-gray-500 pt-16 md:pt-20">Dessins</h2>
                 <div id="detail-technical-grid" class="flex flex-col"></div>
             </section>
 
@@ -254,10 +256,10 @@
                         <svg class="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"></path>
                         </svg>
-                        <span>Projet Précédent</span>
+                        <span data-i18n="prevProject">Projet Précédent</span>
                     </button>
                     <button id="detail-next-btn" type="button" class="group flex items-center gap-3 text-gray-500 hover:text-black transition-colors">
-                        <span>Projet Suivant</span>
+                        <span data-i18n="nextProject">Projet Suivant</span>
                         <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path>
                         </svg>
@@ -272,8 +274,8 @@
          role="dialog" + aria-modal : indique aux lecteurs d'écran qu'il s'agit d'une fenêtre
          qui capture l'attention (le contenu derrière devient inaccessible tant qu'elle est ouverte). -->
     <div id="gallery-modal" class="hidden fixed inset-0 bg-black/95 z-[60] flex-col p-4 md:p-10"
-         role="dialog" aria-modal="true" aria-label="Galerie d'images" aria-hidden="true">
-        <button id="gallery-close-btn" onclick="closeGallery()" aria-label="Fermer la galerie"
+         role="dialog" aria-modal="true" aria-label="Galerie d'images" data-i18n-aria="galleryLabel" aria-hidden="true">
+        <button id="gallery-close-btn" onclick="closeGallery()" aria-label="Fermer la galerie" data-i18n-aria="galleryClose"
                 class="fixed top-6 right-6 md:top-10 md:right-10 text-white/70 hover:text-white transition-colors z-[61]">
             <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
@@ -285,13 +287,13 @@
             <!-- Image principale : occupe tout l'espace disponible, ne déborde jamais de l'écran -->
             <div class="relative flex-1 min-h-0 flex items-center justify-center">
                 <div id="gallery-nav" class="hidden items-center justify-between w-full absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-1 md:px-4 pointer-events-none z-10">
-                    <button id="gallery-prev-btn" onclick="navigateGallery(-1)" aria-label="Image précédente"
+                    <button id="gallery-prev-btn" onclick="navigateGallery(-1)" aria-label="Image précédente" data-i18n-aria="galleryPrev"
                             class="pointer-events-auto text-white/70 hover:text-white transition-colors p-2 bg-black/30 hover:bg-black/50">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"></path>
                         </svg>
                     </button>
-                    <button id="gallery-next-btn" onclick="navigateGallery(1)" aria-label="Image suivante"
+                    <button id="gallery-next-btn" onclick="navigateGallery(1)" aria-label="Image suivante" data-i18n-aria="galleryNext"
                             class="pointer-events-auto text-white/70 hover:text-white transition-colors p-2 bg-black/30 hover:bg-black/50">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path>
@@ -307,8 +309,8 @@
                     <figcaption class="shrink-0 flex items-center gap-4 text-white/70 uppercase tracking-[0.15em] text-xs md:text-sm" aria-live="polite" aria-atomic="true">
                         <span id="gallery-caption"></span>
                         <span id="gallery-counter" class="text-white/40"></span>
-                        <span class="hidden md:inline text-white/30 normal-case tracking-normal">— Molette ou double-clic pour zoomer</span>
-                        <a id="gallery-pdf-link" href="#" target="_blank" rel="noopener" class="hidden text-white/70 hover:text-white underline underline-offset-4 transition-colors">Voir le PDF ↗</a>
+                        <span class="hidden md:inline text-white/30 normal-case tracking-normal" data-i18n="galleryHint">— Molette ou double-clic pour zoomer</span>
+                        <a id="gallery-pdf-link" href="#" target="_blank" rel="noopener" class="hidden text-white/70 hover:text-white underline underline-offset-4 transition-colors" data-i18n="galleryPdf">Voir le PDF ↗</a>
                     </figcaption>
                 </figure>
             </div>
@@ -316,8 +318,92 @@
     </div>
 
 
-    <!-- Scripts, dans l'ordre : données -> rendu -> navigation/animations -->
+    <!-- Sélecteur de langue : discret, fixe en bas à droite, lisible sur fond clair comme
+         sombre (voir #lang-switch dans css/style.css). Géré par js/i18n.js. -->
+    <div id="lang-switch" role="group" aria-label="Changer de langue" data-i18n-aria="langSwitch">
+        <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+
+    <!-- Version sans JavaScript : le contenu du site est généré par js/render.js, donc invisible
+         sans JS (robots, lecteurs minimalistes, JS désactivé). Ce bloc donne l'essentiel, en FR puis EN.
+         ⚠️ Copie statique de js/data.js : à mettre à jour quand tu ajoutes un projet ou une expérience. -->
+    <noscript>
+        <div style="position:fixed;inset:0;z-index:1000;overflow:auto;background:#fff;color:#000;font-weight:300;line-height:1.7;">
+            <div style="max-width:42rem;margin:0 auto;padding:3rem 1.5rem 4rem;">
+                <section lang="fr" style="margin-bottom:3.5rem;">
+                    <h1 style="font-size:2rem;font-weight:300;letter-spacing:0.15em;text-transform:uppercase;margin:0 0 0.25rem;">Pablo Varo</h1>
+                    <p style="margin:0 0 2rem;color:#6b7280;letter-spacing:0.15em;text-transform:uppercase;font-size:0.85rem;">Étudiant en architecture — ENSASE, Saint-Étienne</p>
+                    <p>Portfolio de projets de conception, d'analyses d'architecture et de workshops de construction. Le site interactif nécessite JavaScript : activez-le pour parcourir les planches et les galeries. <a href="#english" style="color:#000;">English version below.</a></p>
+                    <h2 style="font-size:0.85rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;margin:2rem 0 0.75rem;">Conception</h2>
+                    <ul style="margin:0;padding-left:1.1rem;">
+                        <li>Logement pour 3 personnes — L1, S2</li>
+                        <li>Extension de l'école de Jacquard (Saint-Étienne) — L2, S3</li>
+                        <li>Salle polyvalente et café (Saint-Victor-sur-Loire) — L2, S4</li>
+                    </ul>
+                    <h2 style="font-size:0.85rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;margin:2rem 0 0.75rem;">Analyses</h2>
+                    <ul style="margin:0;padding-left:1.1rem;">
+                        <li>Ospedale degli Innocenti, Filippo Brunelleschi, Florence — L2, S3</li>
+                        <li>Pavillon de tennis, Fernando Távora, Quinta da Conceição — L2, S4</li>
+                        <li>Dymaxion House 1, Richard Buckminster Fuller — L2, S4</li>
+                    </ul>
+                    <h2 style="font-size:0.85rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;margin:2rem 0 0.75rem;">Workshops</h2>
+                    <ul style="margin:0;padding-left:1.1rem;">
+                        <li>Construction en bois — L1, S2</li>
+                        <li>Charpente métallique — L2, S3</li>
+                        <li>Construction en pierre — L2, S4</li>
+                    </ul>
+                    <h2 style="font-size:0.85rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;margin:2rem 0 0.75rem;">Expériences</h2>
+                    <ul style="margin:0;padding-left:1.1rem;">
+                        <li>Construction en terre crue, ENSASE — intersemestre 2025-26</li>
+                        <li>Président de l'association Imhotep, ENSASE — 2025-26</li>
+                        <li>Chantier de taille de pierre et maçonnerie, Abbaye de Morimond — 07/2025</li>
+                        <li>Voyage humanitaire, Scouts et Guides de France, Philippines — 07/2024</li>
+                        <li>Stage en agence d'architecture, 83 Arquitectos, Madrid — 05/2023</li>
+                        <li>Stage en menuiserie, Axilom, Carpentras — 04/2020</li>
+                    </ul>
+                    <p style="margin-top:2.5rem;"><a href="cv/Pablo-Varo-CV.pdf" style="color:#000;text-decoration:underline;text-underline-offset:4px;text-transform:uppercase;letter-spacing:0.15em;font-size:0.85rem;font-weight:500;">Télécharger le CV (PDF)</a></p>
+                </section>
+                <section id="english" lang="en" style="margin-bottom:3.5rem;">
+                    <h1 style="font-size:2rem;font-weight:300;letter-spacing:0.15em;text-transform:uppercase;margin:0 0 0.25rem;">Pablo Varo</h1>
+                    <p style="margin:0 0 2rem;color:#6b7280;letter-spacing:0.15em;text-transform:uppercase;font-size:0.85rem;">Architecture student — ENSASE, Saint-Étienne</p>
+                    <p>Portfolio of design projects, architectural analyses and construction workshops. The interactive site requires JavaScript: please enable it to browse the drawings and galleries.</p>
+                    <h2 style="font-size:0.85rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;margin:2rem 0 0.75rem;">Design</h2>
+                    <ul style="margin:0;padding-left:1.1rem;">
+                        <li>Housing for 3 people — Year 1, S2</li>
+                        <li>Extension of the Jacquard school (Saint-Étienne) — Year 2, S3</li>
+                        <li>Multipurpose hall and café (Saint-Victor-sur-Loire) — Year 2, S4</li>
+                    </ul>
+                    <h2 style="font-size:0.85rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;margin:2rem 0 0.75rem;">Analysis</h2>
+                    <ul style="margin:0;padding-left:1.1rem;">
+                        <li>Ospedale degli Innocenti, Filippo Brunelleschi, Florence — Year 2, S3</li>
+                        <li>Tennis Pavilion, Fernando Távora, Quinta da Conceição — Year 2, S4</li>
+                        <li>Dymaxion House 1, Richard Buckminster Fuller — Year 2, S4</li>
+                    </ul>
+                    <h2 style="font-size:0.85rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;margin:2rem 0 0.75rem;">Workshops</h2>
+                    <ul style="margin:0;padding-left:1.1rem;">
+                        <li>Timber construction — Year 1, S2</li>
+                        <li>Steel frame — Year 2, S3</li>
+                        <li>Stone construction — Year 2, S4</li>
+                    </ul>
+                    <h2 style="font-size:0.85rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;margin:2rem 0 0.75rem;">Experience</h2>
+                    <ul style="margin:0;padding-left:1.1rem;">
+                        <li>Raw earth construction, ENSASE — intersemester 2025-26</li>
+                        <li>President of the Imhotep association, ENSASE — 2025-26</li>
+                        <li>Stone carving and masonry work camp, Morimond Abbey — 07/2025</li>
+                        <li>Humanitarian trip, Scouts et Guides de France, Philippines — 07/2024</li>
+                        <li>Internship at an architecture firm, 83 Arquitectos, Madrid — 05/2023</li>
+                        <li>Carpentry internship, Axilom, Carpentras — 04/2020</li>
+                    </ul>
+                    <p style="margin-top:2.5rem;"><a href="cv/Pablo-Varo-CV.pdf" style="color:#000;text-decoration:underline;text-underline-offset:4px;text-transform:uppercase;letter-spacing:0.15em;font-size:0.85rem;font-weight:500;">Download CV (PDF, in French)</a></p>
+                </section>
+            </div>
+        </div>
+    </noscript>
+
+    <!-- Scripts, dans l'ordre : données -> langues -> rendu -> navigation/animations -->
     <script src="js/data.js"></script>
+    <script src="js/i18n.js"></script>
     <script src="js/render.js"></script>
     <script src="js/app.js"></script>
 

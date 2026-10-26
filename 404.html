@@ -12,9 +12,7 @@
     <!-- Mêmes feuilles de style que le reste du site, pour garder une
          apparence strictement identique (police, couleurs, espacements). -->
     <link href="css/tailwind.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="preload" href="fonts/jost-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="css/style.css">
 
     <style>
@@ -23,7 +21,7 @@
         body { overflow: auto; background-color: #fff; }
     </style>
 </head>
-<body class="text-black antialiased selection:bg-black selection:text-white min-h-screen flex flex-col">
+<body data-page-404 class="text-black antialiased selection:bg-black selection:text-white min-h-screen flex flex-col">
 
     <header class="flex justify-between items-center p-8 md:p-12 w-full uppercase tracking-widest text-sm md:text-base font-medium">
         <a href="index.html" class="hover:text-gray-400 transition-colors">Pablo VARO</a>
@@ -34,17 +32,22 @@
 
     <main class="flex-1 flex flex-col items-center justify-center text-center gap-8 px-6 -mt-12">
         <h1 class="text-6xl md:text-8xl lg:text-[9rem] font-light tracking-[0.15em]">404</h1>
-        <p class="text-base md:text-lg font-light tracking-wide text-gray-500 max-w-md">
-            Cette page n'existe pas, ou a été déplacée.
-        </p>
+        <p class="text-base md:text-lg font-light tracking-wide text-gray-500 max-w-md" data-i18n="notFoundText">Cette page n'existe pas, ou a été déplacée.</p>
         <a href="index.html"
            class="group relative mt-4 inline-flex items-center gap-4 text-sm tracking-[0.2em] uppercase font-medium hover:text-gray-400 transition-colors">
             <svg class="w-5 h-5 transform group-hover:-translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
             </svg>
-            Retour à l'accueil
+            <span data-i18n="notFoundBack">Retour à l'accueil</span>
         </a>
     </main>
+
+    <div id="lang-switch" role="group" aria-label="Changer de langue" data-i18n-aria="langSwitch">
+        <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+
+    <script src="js/i18n.js"></script>
 
 </body>
 </html>
