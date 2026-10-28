@@ -72,7 +72,7 @@
                 .map(
                     (f) =>
                         '<div class="flex gap-4">' +
-                        '<span class="font-medium min-w-[40px]">' + escapeHtml(f.year) + "</span>" +
+                        '<span class="font-medium" style="min-width:5rem">' + escapeHtml(f.year) + "</span>" +
                         '<span class="text-gray-700">' + escapeHtml(t(f.label)) + "</span>" +
                         "</div>"
                 )

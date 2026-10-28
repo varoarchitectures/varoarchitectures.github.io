@@ -29,7 +29,7 @@ window.SITE_DATA = {
             permit: { fr: "Permis B", en: "Driving licence (category B)" }
         },
         formation: [
-            { year: "2026", label: { fr: "2e année de Licence en Architecture, ENSASE", en: "2nd year of Bachelor’s degree in Architecture, ENSASE" } },
+            { year: "2026-2027", label: { fr: "3e année de Licence en Architecture, ENSASE", en: "3rd year of Bachelor’s degree in Architecture, ENSASE" } },
             { year: "2024", label: { fr: "1re année de Licence Histoire de l'Art & Archéologie, Lyon 2", en: "1st year of Bachelor’s degree in Art History & Archaeology, Lyon 2" } },
             { year: "2023", label: { fr: "Baccalauréat — Spécialités Maths, Physique-Chimie, SVT", en: "French Baccalauréat — Specialisations: Mathematics, Physics-Chemistry, Life & Earth Sciences" } }
         ],
@@ -172,16 +172,7 @@ window.SITE_DATA = {
                     teacher: "Sébastien MARTINEZ-BARAT",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: "“Less is enough”, Pier Vittorio Aureli",
-                    description: {
-                        fr: [
-                            "Inspiré par le manifeste « Less is Enough » de Pier Vittorio Aureli, le projet explore l'économie de moyens comme vecteur d'espaces. Le parpaing brut, laissé apparent, s'affirme comme un choix de simplicité : standard et économique.",
-                            "Le plan s'étire en une ligne. La distribution s'opère par une coursive bioclimatique en polycarbonate le long de la façade : espace tampon captant les apports solaires en hiver, elle s'ouvre intégralement pour transformer le couloir en terrasse aux beaux jours, hybridant les limites entre intérieur et grand paysage."
-                        ],
-                        en: [
-                            "Inspired by Pier Vittorio Aureli's manifesto “Less is Enough”, the project explores economy of means as a generator of space. Raw concrete block, left exposed, asserts itself as a choice of simplicity: standard and economical.",
-                            "The plan stretches into a single, compact line. Circulation runs along a bioclimatic polycarbonate gallery on the façade: a buffer space that captures solar gains in winter, it opens up entirely to turn the corridor into a terrace in fine weather, blurring the boundary between the interior and the open landscape."
-                        ]
-                    },
+                    description: { fr: "", en: "" },
                     hero: "img/coloc/detail.webp",
                     technical: [
                         { image: "img/coloc/plan.webp", caption: "Plan" },
@@ -203,16 +194,7 @@ window.SITE_DATA = {
                     teacher: "Jérôme GLAIROUX",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: { fr: "la conservation de l'existant. En le dupliquant, l'extension s'élance dans le parc pour s'y ancrer.", en: "preserving the existing. By duplicating it, the extension reaches out into the park to anchor itself there." },
-                    description: {
-                        fr: [
-                            "Inscrit dans le parc Félix Thiollier, le projet instaure un dialogue morphologique avec l'existant.",
-                            "La partition repose sur la duplication formelle du bâti d'origine, appliquée avec un léger glissement d'axe qui libère des perspectives vers le parc. Au centre, une large circulation commune sous verrière capte la lumière zénithale, transformant le simple couloir de distribution en un espace d'entre-deux lumineux dédié aux interactions."
-                        ],
-                        en: [
-                            "Set within the Parc Félix Thiollier, the project establishes a morphological dialogue with the existing building.",
-                            "The layout rests on the formal duplication of the original building, applied with a slight axial shift that opens up views towards the park. At the centre, a wide shared circulation space under a glass roof draws in zenithal light, turning the simple distribution corridor into a luminous in-between space devoted to interaction."
-                        ]
-                    },
+                    description: { fr: "", en: "" },
                     hero: "img/ecole/maquette.webp",
                     process: [
                         { image: "img/ecole/dedoublement.webp", caption: { fr: "Intention initiale", en: "Initial intention" } },
@@ -239,16 +221,7 @@ window.SITE_DATA = {
                     teacher: "Séverin PERREAULT",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: { fr: "Rester dans le village, c'est poursuivre le chemin de ronde et y fixer le projet. Enterrer et poser.", en: "To stay within the village is to continue the wall walk and fix the project to it. Bury and place." },
-                    description: {
-                        fr: [
-                            "Encastré dans le dénivelé du site du cimetière, le projet redéfinit entièrement le partage des flux : le stationnement est relégué en contrebas au niveau de la salle polyvalente, libérant le niveau haut côté bourg au profit d'une esplanade entièrement piétonne autour du café. Traité en moellons bruts, le socle de la salle prolonge les murs des remparts et du château, intégrant le projet au cœur du bourg médiéval.",
-                            "Posé sur un socle habité, le café se présente comme un pavillon ouvert et léger. Au quotidien, il fait office d'abri et de belvédère pour les randonneurs ; lors des rassemblements et fêtes de village, il bascule en café associatif et espace couvert, conciliant la pratique de proximité avec le village."
-                        ],
-                        en: [
-                            "Embedded in the slope of the cemetery site, the project completely redefines how flows are shared: parking is relegated to the lower level, alongside the multipurpose hall, freeing the upper level on the village side for a fully pedestrian esplanade around the café. Built in rough rubble stone, the base of the hall extends the walls of the ramparts and the castle, integrating the project into the heart of the medieval village.",
-                            "Set on an inhabited base, the café is an open, light pavilion. Day to day, it serves as a shelter and viewpoint for hikers; during gatherings and village festivals, it switches to a community café and covered space, reconciling everyday local use with village life."
-                        ]
-                    },
+                    description: { fr: "", en: "" },
                     hero: "img/cafe/maquette.webp",
                     process: [
                         { image: "img/cafe/installer.webp", caption: { fr: "Installer", en: "Install" } },
@@ -281,16 +254,7 @@ window.SITE_DATA = {
                     teacher: "Jérôme GLAIROUX",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: { fr: "construire un bâtiment, pour façonner une place, pour façonner une ville.", en: "building a building to shape a square, to shape a city." },
-                    description: {
-                        fr: [
-                            "Étude de l'un des premiers édifices de la Renaissance florentine.",
-                            "Décomposition de la travée modulaire carrée et de la perspective linéaire. L'analyse met en lumière la rigueur proportionnelle du portique (hauteur de colonne égale à l'entrecolonne et à la profondeur de la nef), opérant comme un seuil public géométrique entre la ville et l'institution."
-                        ],
-                        en: [
-                            "A study of one of the first buildings of the Florentine Renaissance.",
-                            "Breakdown of the square modular bay and of linear perspective. The analysis highlights the proportional rigour of the portico (column height equal to the intercolumniation and to the depth of the nave), acting as a geometric public threshold between the city and the institution."
-                        ]
-                    },
+                    description: { fr: "", en: "" },
                     hero: "img/ospedale/maquette.webp",
                     process: [
                         { image: "img/ospedale/lien.svg", caption: { fr: "Lien", en: "Link" } },
@@ -317,16 +281,7 @@ window.SITE_DATA = {
                     teacher: "Séverin PERREAULT",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: { fr: "Un pavillon, comme moyen de voir. un dessous et un dessus, ouvrant sur le paysage, partitionnant la nature.", en: "A pavilion as a way of seeing: a below and an above, opening onto the landscape, partitioning nature." },
-                    description: {
-                        fr: [
-                            "Travail d'étude sur un projet clé de l'École de Porto, illustrant le dialogue entre modernité et tradition vernaculaire portugaise.",
-                            "Analyse de la séquence d'accès dans le parc, de la tectonique du socle maçonné et de la toiture suspendue en bois. L'accent est mis sur la légèreté de l'édifice, qui s'efface pour l'observation de la végétation environnante."
-                        ],
-                        en: [
-                            "A study of a key project of the Porto School, illustrating the dialogue between modernity and Portuguese vernacular tradition.",
-                            "Analysis of the access sequence through the park, of the tectonics of the masonry base and of the suspended timber roof. The emphasis is on the building's lightness, which fades away to leave room for observing the surrounding vegetation."
-                        ]
-                    },
+                    description: { fr: "", en: "" },
                     hero: "img/tavora/maquette.webp",
                     process: [
                         { image: "img/tavora/installer.webp", caption: { fr: "Installer", en: "Install" } },
@@ -355,16 +310,7 @@ window.SITE_DATA = {
                     semester: { fr: "L2 — S4", en: "Year 2 — Semester 4" },
                     teacher: "Boris HAMZEIAN",
                     manifesto: { fr: "Une machine à habiter, un environnement artificiel.", en: "A machine for living, an artificial environment." },
-                    description: {
-                        fr: [
-                            "Donner une cohérence constructive à une utopie industrielle restée à l'état de prototype.",
-                            "Modélisation et clarification des assemblages constructifs : mât central en aluminium, reprise des charges suspendues par câbles et peau aérodynamique. Le travail a consisté à résoudre les liaisons techniques et les proportions pour rendre cette machine à habiter structurellement plausible et spatialement lisible."
-                        ],
-                        en: [
-                            "Giving constructive coherence to an industrial utopia that remained at the prototype stage.",
-                            "Modelling and clarification of the constructive assemblies: central aluminium mast, suspended loads carried by cables, and aerodynamic skin. The work consisted in resolving the technical connections and the proportions to make this machine for living structurally plausible and spatially legible."
-                        ]
-                    },
+                    description: { fr: "", en: "" },
                     hero: "img/dymaxion/maquette.webp",
 
                     technical: [
@@ -388,14 +334,7 @@ window.SITE_DATA = {
                     teacher: "Rémi COLLET",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: { fr: "De simples assemblages, pour distribuer des charges et former une structure.", en: "Simple joints, to distribute loads and form a structure." },
-                    description: {
-                        fr: [
-                            "Relevé analytique et dessin technique de la charpente bois. Décorticage du comportement mécanique sous charges dynamiques, articulation des liaisons d'assemblage et compréhension des flux d'efforts."
-                        ],
-                        en: [
-                            "Analytical survey and technical drawing of the timber frame. Dissection of its mechanical behaviour under dynamic loads, articulation of the assembly joints and understanding of the flow of forces."
-                        ]
-                    },
+                    description: { fr: "", en: "" },
                     hero: "img/bois/maquette.webp",
                     technical: [
                         { image: "img/bois/plan_et_coupe.webp", caption: { fr: "Plan et coupe", en: "Plan and section" } },
@@ -417,14 +356,7 @@ window.SITE_DATA = {
                     teacher: "Rémi COLLET",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: { fr: "Une structure spatiale triangulée en trois dimensions, où chaque rotule fixe participe à la stabilité de l'ensemble.", en: "A triangulated three-dimensional space structure, where each fixed ball joint contributes to the stability of the whole." },
-                    description: {
-                        fr: [
-                            "Relevé géométrique sur site de la nappe métallique couvrant le bassin. Questionnement typologique (vraie ou fausse résille tridimensionnelle), modélisation des nœuds d'articulation et création d'une affiche liant précision technique et volonté artistique."
-                        ],
-                        en: [
-                            "On-site geometric survey of the metal grid covering the pool. Typological questioning (true or false three-dimensional lattice), modelling of the articulation nodes and creation of a poster combining technical precision and artistic intent."
-                        ]
-                    },
+                    description: { fr: "", en: "" },
                     hero: "img/metal/affiche.webp",
                     technical: [
                         { image: "img/metal/plan.webp", caption: "Plan" },
@@ -445,20 +377,13 @@ window.SITE_DATA = {
                     teacher: "Rémi COLLET",
                     location: "ENSASE, Saint-Étienne",
                     manifesto: { fr: "Ici, l'équilibre ne vient pas de la légèreté mais du poids : la masse de pierre travaille contre la gravité plutôt qu'avec elle.", en: "Here, balance comes not from lightness but from weight: the mass of stone works against gravity rather than with it." },
-                    description: {
-                        fr: [
-                            "Analyse de l'équilibre de l'ouvrage sans liant moderne. Reconstitution du calepinage, étude des poussées latérales et repérage des caractéristiques qui assurent la pérennité structurelle de cet abri en pierres sèches."
-                        ],
-                        en: [
-                            "Analysis of the structure's balance without modern binder. Reconstruction of the stone coursing layout, study of lateral thrusts and identification of the features that ensure the structural durability of this dry-stone shelter."
-                        ]
-                    },
+                    description: { fr: "", en: "" },
                     hero: "img/pierre/maquette.webp",
                     process: [
                         { image: "img/pierre/schema_01.webp", caption: { fr: "L’assise (la fondation) : On creuse une tranchée pour poser les plus grosses pierres au sol. Elles doivent être enterrées pour éviter que le mur ne glisse.", en: "The foundation course (the base): A trench is dug to lay the largest stones on the ground. They must be buried to stop the wall from sliding." } },
                         { image: "img/pierre/schema_02.webp", caption: { fr: "Le fruit (l’inclinaison) : Le mur ne doit pas être parfaitement vertical. Il doit s’incliner légèrement vers l’intérieur (entre 10% et 15%). Cela déplace le centre de gravité vers le cœur de la structure.", en: "The batter (the slope): The wall must not be perfectly vertical. It should lean slightly inwards (between 10% and 15%). This shifts the centre of gravity towards the heart of the structure." } },
-                        { image: "img/pierre/schema_03.webp", caption: { fr: "Les boutisses : Ce sont des pierres longues posées dans le sens de l’épaisseur du mur. Elles traversent le mur de part en part pour lier le parement extérieur et intérieur. Ce sont les « clous » de la structure.", en: "Through-stones (headers): These are long stones laid across the thickness of the wall. They pass right through it to tie the outer and inner faces together. They are the “nails” of the structure." } },
-                        { image: "img/pierre/schema_04.webp", caption: { fr: "Le calage et le remplissage : On remplit l’intérieur du mur avec de la petite caillasse (le « tout-venant »). Attention : ces petits cailloux ne sont pas jetés au hasard, ils sont bloqués fermement pour empêcher les grosses pierres de bouger", en: "Wedging and filling: The inside of the wall is filled with small rubble (the “hearting”). Careful: these small stones are not thrown in at random; they are wedged firmly to stop the large stones from moving." } }
+                        { image: "img/pierre/schema_03.webp", caption: { fr: "Les boutisses : Ce sont des pierres longues posées dans le sens de l’épaisseur du mur. Elles traversent le mur de part en part pour lier le parement extérieur et intérieur. Ce sont les « clous » de la structure.", en: "Through-stones (headers): These are long stones laid across the thickness of the wall. They pass right through it to tie the outer and inner faces together. They are the “nails” of the structure." } },
+                        { image: "img/pierre/schema_04.webp", caption: { fr: "Le calage et le remplissage : On remplit l’intérieur du mur avec de la petite caillasse (le « tout-venant »). Attention : ces petits cailloux ne sont pas jetés au hasard, ils sont bloqués fermement pour empêcher les grosses pierres de bouger", en: "Wedging and filling: The inside of the wall is filled with small rubble (the “hearting”). Careful: these small stones are not thrown in at random; they are wedged firmly to stop the large stones from moving." } }
                     ],
                     // 2 cadres par ligne (2x2) pour les 4 planches du process,
                     // comme sur la page d'analyse du pavillon de tennis.
