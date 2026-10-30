@@ -33,7 +33,7 @@ window.SITE_DATA = {
             { year: "2024", label: { fr: "1re année de Licence Histoire de l'Art & Archéologie, Lyon 2", en: "1st year of Bachelor’s degree in Art History & Archaeology, Lyon 2" } },
             { year: "2023", label: { fr: "Baccalauréat — Spécialités Maths, Physique-Chimie, SVT", en: "French Baccalauréat — Specialisations: Mathematics, Physics-Chemistry, Life & Earth Sciences" } }
         ],
-        software: ["AutoCAD", "Rhino", { fr: "Impression 3D", en: "3D printing" }, { fr: "Découpe Laser", en: "Laser cutting" }, "QGIS"],
+        software: ["AutoCAD", "Rhino", "Revit", { fr: "Impression 3D", en: "3D printing" }, { fr: "Découpe Laser", en: "Laser cutting" }, "QGIS"],
         languages: [{ fr: "Anglais (Courant)", en: "English (Fluent)" }, { fr: "Espagnol (Bilingue)", en: "Spanish (Bilingual)" }, { fr: "Français (Bilingue)", en: "French (Bilingual)" }]
     },
 
