@@ -1,0 +1,217 @@
+/* ==========================================================================
+   Portfolio Pablo VARO — feuille de style
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Police Jost, hébergée en local (fonts/) : plus aucune requête vers Google.
+   Licence SIL OFL — voir fonts/LICENSE-Jost.txt.
+   Sous-ensemble "latin" : couvre le français, l'espagnol et l'anglais.
+   -------------------------------------------------------------------------- */
+@font-face {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('../fonts/jost-latin-300-normal.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/jost-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Jost';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('../fonts/jost-latin-500-normal.woff2') format('woff2');
+}
+
+body {
+    font-family: 'Jost', sans-serif;
+    margin: 0;
+    overflow: hidden; /* Empêche le scroll pendant l'animation */
+    background-color: #000;
+}
+
+/* L'image de fond avec un overlay sombre pour la lisibilité */
+.bg-image {
+    background-image: url('../img/accueil.webp');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Garantit que les lettres ont une boîte de rendu stricte pour l'animation */
+.letter {
+    display: inline-block;
+    line-height: 1;
+}
+
+/* Effet de grossissement du mot PORTFOLIO au survol */
+#portfolio-title {
+    /* Taille fluide qui s'adapte à la largeur de l'écran : évite que le mot
+       devienne trop grand sur les écrans moyens/larges et déborde au survol. */
+    font-size: clamp(3rem, 11vw, 10.5rem);
+    /* Empêche le retour à la ligne : si le mot est trop large, il déborde
+       proprement au lieu de se scinder sur deux lignes. */
+    white-space: nowrap;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+                letter-spacing 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+#portfolio-title:hover {
+    /* Grossissement plus modéré pour rester dans l'écran */
+    transform: scale(1.08);
+    letter-spacing: 0.2em;
+}
+
+/* Personnalisation de la barre de défilement pour un look épuré */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+
+/* Effet sur les images de la grille projets */
+.cv-image {
+    transition: transform 0.5s ease;
+    background-color: #e5e5e5; /* évite un flash blanc pendant le chargement */
+}
+.cv-image:hover {
+    transform: scale(1.02);
+}
+
+/* --------------------------------------------------------------------------
+   Gestion des erreurs : image indisponible (voir js/render.js)
+   -------------------------------------------------------------------------- */
+.img-broken {
+    filter: none !important;
+    object-fit: contain !important;
+    padding: 2rem;
+    opacity: 0.35;
+}
+
+.content-error {
+    padding: 2rem 0;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #9ca3af; /* gray-400 */
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Focus clavier visible (accessibilité) */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 4px;
+}
+
+/* Respect de la préférence "réduire les animations" */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+    }
+}
+
+
+/* --------------------------------------------------------------------------
+   Sélecteur de langue FR / EN (voir js/i18n.js)
+   Blanc + mix-blend-mode: difference : il reste lisible sur la landing sombre
+   comme sur les pages blanches, sans règle spécifique par page.
+   -------------------------------------------------------------------------- */
+#lang-switch {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1rem;
+    z-index: 70;
+    display: flex;
+    gap: 0.9rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #fff;
+    mix-blend-mode: difference;
+}
+#lang-switch button {
+    background: none;
+    border: 0;
+    padding: 0.35rem 0.1rem;
+    margin: 0;
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    color: inherit;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+#lang-switch button:hover,
+#lang-switch button:focus-visible {
+    opacity: 1;
+}
+#lang-switch button[aria-pressed="true"] {
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+/* Masqué quand la galerie plein écran est ouverte (placé après elle dans index.html). */
+#gallery-modal:not(.hidden) ~ #lang-switch {
+    display: none;
+}
+
+
+/* --------------------------------------------------------------------------
+   Curseur flèche de la page détail projet (voir setupSectionCursor, js/app.js)
+   Deux traits qui forment un angle, même tracé (angles droits, trait fin) que les
+   autres flèches du site. Blanc + mix-blend-mode: difference : il apparaît noir
+   sur le fond blanc des pages et reste visible s'il passe sur une image sombre.
+   -------------------------------------------------------------------------- */
+#nav-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    margin: -16px 0 0 -16px; /* centré sur la pointe de la souris */
+    z-index: 65;
+    pointer-events: none;
+    color: #fff;
+    mix-blend-mode: difference;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    will-change: transform;
+}
+#nav-cursor.is-visible {
+    opacity: 1;
+}
+#nav-cursor svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+#nav-cursor.is-down svg {
+    transform: rotate(180deg);
+}
+/* Le curseur natif est masqué tant que la flèche est affichée. */
+#page5.nav-cursor-on,
+#page5.nav-cursor-on .doc-viewer-trigger {
+    cursor: none;
+}
+/* Dans les marges d'un plan, on masque l'effet de survol "Agrandir" : le clic navigue. */
+#page5.nav-cursor-on .doc-viewer-trigger > span {
+    display: none;
+}

@@ -892,9 +892,185 @@ function applyRoute() {
 
 window.addEventListener("popstate", applyRoute);
 
+/* --------------------------------------------------------------------------
+   Curseur "flèche" de la page détail projet (page5)
+   Deux traits noirs qui forment un angle, comme les autres flèches du site.
+   - moitié haute de l'écran : flèche vers le haut -> un clic remonte à la section précédente
+   - moitié basse de l'écran : flèche vers le bas  -> un clic descend à la section suivante
+   La molette continue de fonctionner normalement. Le curseur n'apparaît pas sur les
+   éléments cliquables (liens, boutons, plans/coupes à agrandir, barre du haut), ni
+   quand il n'y a plus de section dans la direction visée, ni sur écran tactile.
+   Les "sections" sont les blocs qui remplissent un écran : cartouche, processus,
+   chaque groupe de dessins, détail constructif, pied de page.
+   -------------------------------------------------------------------------- */
+function setupSectionCursor() {
+    const page = document.getElementById("page5");
+    if (!page) return;
+    if (!window.matchMedia || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+    const INTERACTIVE = "a, button, input, select, textarea, label, summary, [role='button'], .sticky";
+    const TOLERANCE = 8;      // px : en dessous, on considère qu'on est déjà "sur" la section
+    const SETTLE_MS = 1200;   // durée max pendant laquelle un défilement animé est "en cours"
+
+    const cursor = document.createElement("div");
+    cursor.id = "nav-cursor";
+    cursor.setAttribute("aria-hidden", "true");
+    cursor.innerHTML =
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" ' +
+        'stroke-linecap="square" stroke-linejoin="miter"><path d="M3 15l9-9 9 9"></path></svg>';
+    document.body.appendChild(cursor);
+
+    let mouse = null;        // dernière position connue de la souris
+    let downPos = null;      // position du bouton enfoncé (pour ignorer un glisser)
+    let pending = null;      // cible d'un défilement animé en cours
+    let pendingTimer = null;
+    let frame = 0;
+
+    // Position (en px, dans le contenu défilant) de chaque début de section.
+    function getTargets() {
+        const max = Math.max(0, page.scrollHeight - page.clientHeight);
+        const pageTop = page.getBoundingClientRect().top;
+        const ys = [0]; // le cartouche commence tout en haut
+        const blocks = [
+            document.getElementById("detail-process-section")
+        ].concat(
+            Array.from(document.querySelectorAll("#detail-technical-grid > *")),
+            [
+                document.getElementById("detail-tectonic-section"),
+                page.querySelector("footer")
+            ]
+        );
+        blocks.forEach(function (el) {
+            if (!el || el.offsetHeight === 0) return; // section masquée (pas de contenu)
+            const y = el.getBoundingClientRect().top - pageTop + page.scrollTop;
+            ys.push(Math.min(Math.max(Math.round(y), 0), max)); // le pied de page ne peut pas aller plus haut que le bas de page
+        });
+        ys.sort(function (a, b) { return a - b; });
+        return ys.filter(function (y, i) { return i === 0 || y - ys[i - 1] > TOLERANCE; });
+    }
+
+    // dir = -1 (section précédente) ou 1 (section suivante) ; undefined s'il n'y en a pas.
+    function findTarget(dir) {
+        const ref = pending !== null ? pending : page.scrollTop;
+        const ys = getTargets();
+        if (dir > 0) return ys.find(function (y) { return y > ref + TOLERANCE; });
+        for (let i = ys.length - 1; i >= 0; i--) {
+            if (ys[i] < ref - TOLERANCE) return ys[i];
+        }
+        return undefined;
+    }
+
+    // Vrai si le point (x, y) est sur un élément qui a sa propre action au clic.
+    // Les plans/coupes sont des boutons "agrandir" dont la boîte dépasse le dessin :
+    // seul le dessin lui-même est considéré cliquable, les marges autour laissent la flèche active.
+    function isInteractiveAt(target, x, y) {
+        const doc = target.closest(".doc-viewer-trigger");
+        if (doc) {
+            const img = doc.querySelector("img");
+            if (!img) return true;
+            const r = img.getBoundingClientRect();
+            return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
+        }
+        return !!target.closest(INTERACTIVE);
+    }
+
+    // Direction (-1 / 1) si le curseur-flèche doit s'afficher à cet endroit, sinon null.
+    function zoneAt(target, x, y) {
+        if (!target || !page.contains(target)) return null;
+        if (isInteractiveAt(target, x, y)) return null;
+        const dir = y < window.innerHeight / 2 ? -1 : 1;
+        return findTarget(dir) === undefined ? null : dir;
+    }
+
+    function hide() {
+        cursor.classList.remove("is-visible");
+        page.classList.remove("nav-cursor-on");
+    }
+
+    function refresh() {
+        frame = 0;
+        const gallery = document.getElementById("gallery-modal");
+        const galleryOpen = gallery && !gallery.classList.contains("hidden");
+        const pageActive = page.offsetWidth > 0 && window.getComputedStyle(page).pointerEvents !== "none";
+        if (!mouse || galleryOpen || !pageActive) { hide(); return; }
+
+        const dir = zoneAt(document.elementFromPoint(mouse.x, mouse.y), mouse.x, mouse.y);
+        if (dir === null) { hide(); return; }
+
+        cursor.classList.toggle("is-down", dir > 0);
+        cursor.classList.add("is-visible");
+        page.classList.add("nav-cursor-on");
+    }
+
+    function schedule() {
+        if (!frame) frame = requestAnimationFrame(refresh);
+    }
+
+    function clearPending() {
+        pending = null;
+        clearTimeout(pendingTimer);
+    }
+
+    function goTo(y) {
+        pending = y;
+        clearTimeout(pendingTimer);
+        pendingTimer = setTimeout(function () { pending = null; schedule(); }, SETTLE_MS);
+        const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        page.scrollTo({ top: y, behavior: reduced ? "auto" : "smooth" });
+    }
+
+    page.addEventListener("pointermove", function (e) {
+        if (e.pointerType && e.pointerType !== "mouse") return;
+        mouse = { x: e.clientX, y: e.clientY };
+        cursor.style.transform = "translate3d(" + mouse.x + "px," + mouse.y + "px,0)";
+        schedule();
+    });
+
+    page.addEventListener("pointerleave", function () {
+        mouse = null;
+        hide();
+    });
+
+    page.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    if ("onscrollend" in window) {
+        page.addEventListener("scrollend", function () { clearPending(); schedule(); });
+    }
+
+    // Une action manuelle (molette, tactile, clavier) annule le défilement animé en cours.
+    ["wheel", "touchstart", "keydown"].forEach(function (name) {
+        page.addEventListener(name, clearPending, { passive: true });
+    });
+
+    // La page est affichée/masquée via son attribut style (voir switchPage) : on suit ça.
+    new MutationObserver(schedule).observe(page, { attributes: true, attributeFilter: ["style"] });
+
+    page.addEventListener("mousedown", function (e) {
+        downPos = { x: e.clientX, y: e.clientY };
+        // Évite la sélection de mots quand on enchaîne rapidement les clics.
+        if (e.detail > 1 && page.classList.contains("nav-cursor-on")) e.preventDefault();
+    });
+
+    // En phase de capture : quand la flèche est active sur la marge d'un plan, le clic
+    // navigue et ne doit pas, en plus, ouvrir la visionneuse du bouton "agrandir".
+    page.addEventListener("click", function (e) {
+        if (e.button !== 0 || e.pointerType === "touch") return;
+        if (downPos && Math.hypot(e.clientX - downPos.x, e.clientY - downPos.y) > 6) return; // glisser, pas un clic
+        if (window.getSelection && String(window.getSelection()).length > 0) return;          // sélection de texte
+
+        const dir = zoneAt(e.target, e.clientX, e.clientY);
+        if (dir === null) return;
+        const y = findTarget(dir);
+        if (y === undefined) return;
+        e.stopPropagation();
+        goTo(y);
+    }, true);
+}
+
 function initApp() {
     renderLandingWords();
     setupPage1Entry();
+    setupSectionCursor();
     applyRoute();
     if (window.I18N) window.I18N.onChange(renderLandingWords);
 }
