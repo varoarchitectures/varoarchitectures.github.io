@@ -171,3 +171,47 @@ button:focus-visible {
 #gallery-modal:not(.hidden) ~ #lang-switch {
     display: none;
 }
+
+
+/* --------------------------------------------------------------------------
+   Curseur flèche de la page détail projet (voir setupSectionCursor, js/app.js)
+   Deux traits qui forment un angle, même tracé (angles droits, trait fin) que les
+   autres flèches du site. Blanc + mix-blend-mode: difference : il apparaît noir
+   sur le fond blanc des pages et reste visible s'il passe sur une image sombre.
+   -------------------------------------------------------------------------- */
+#nav-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    margin: -16px 0 0 -16px; /* centré sur la pointe de la souris */
+    z-index: 65;
+    pointer-events: none;
+    color: #fff;
+    mix-blend-mode: difference;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    will-change: transform;
+}
+#nav-cursor.is-visible {
+    opacity: 1;
+}
+#nav-cursor svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+#nav-cursor.is-down svg {
+    transform: rotate(180deg);
+}
+/* Le curseur natif est masqué tant que la flèche est affichée. */
+#page5.nav-cursor-on,
+#page5.nav-cursor-on .doc-viewer-trigger {
+    cursor: none;
+}
+/* Dans les marges d'un plan, on masque l'effet de survol "Agrandir" : le clic navigue. */
+#page5.nav-cursor-on .doc-viewer-trigger > span {
+    display: none;
+}
