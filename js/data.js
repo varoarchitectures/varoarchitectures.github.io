@@ -320,7 +320,7 @@ window.SITE_DATA = {
                     description: {
                         fr: [
                             "Travail d'étude sur un projet clé de l'École de Porto, illustrant le dialogue entre modernité et tradition vernaculaire portugaise.",
-                            "Analyse de la séquence d'accès dans le parc, de la tectonique du socle maçonné et de la toiture suspendue en bois. L'accent est mis sur la légèreté de l'édifice, qui s'efface pour l'observation de la végétation environnante."
+                            "Analyse de la séquence d'accès dans le parc, de la tectonique du socle maçonné et de la toiture. L'accent est mis sur la légèreté de l'édifice, qui cadre la vue vers les terrains et partitionne celle vers les grands arbres."
                         ],
                         en: [
                             "A study of a key project of the Porto School, illustrating the dialogue between modernity and Portuguese vernacular tradition.",
@@ -358,7 +358,7 @@ window.SITE_DATA = {
                     description: {
                         fr: [
                             "Donner une cohérence constructive à une utopie industrielle restée à l'état de prototype.",
-                            "Modélisation et clarification des assemblages constructifs : mât central en aluminium, reprise des charges suspendues par câbles et peau aérodynamique. Le travail a consisté à résoudre les liaisons techniques et les proportions pour rendre cette machine à habiter structurellement plausible et spatialement lisible."
+                            "Modélisation et clarification des assemblages constructifs : mât central en aluminium, reprise des charges suspendues par câbles et peau aérodynamique. Le travail a consisté à résoudre les liaisons et les proportions pour rendre cette machine à habiter structurellement plausible et spatialement lisible."
                         ],
                         en: [
                             "Giving constructive coherence to an industrial utopia that remained at the prototype stage.",
